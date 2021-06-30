@@ -4,9 +4,11 @@
   "description": "Bootcamp project 2",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "seed": "node seeds/seed.js"
+    "seed": "node seeds/seed.js",
+    "lint": "eslint . --ext .js --quiet",
+    "fix": "eslint --fix .",
+    "test": "npm run lint"
   },
   "repository": {
     "type": "git",
@@ -28,5 +30,15 @@
     "handlebars": "^4.7.7",
     "mysql2": "^2.2.5",
     "sequelize": "^6.6.4"
+  },
+  "devDependencies": {
+    "eslint": "^7.9.0",
+    "eslint-config-prettier": "6.11.0",
+    "eslint-plugin-import": "2.22.0",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-promise": "4.2.1",
+    "eslint-plugin-standard": "4.0.1",
+    "prettier": "^2.1.2"
   }
 }
