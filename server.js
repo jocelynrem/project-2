@@ -11,7 +11,7 @@ const session = require('express-session');
 // const exphbs = require('express-handlebars');
 
 // importing routes
-// const routes = require('./controllers');
+const routes = require('./controllers');
 
 // to be used as an ORM
 const sequelize = require('./config/connection');
@@ -56,7 +56,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // to be used once we create routes
-// app.use(routes);
+app.use(routes);
 
 // synchronization for server and DB
 sequelize.sync({ force: false }).then(() => {
