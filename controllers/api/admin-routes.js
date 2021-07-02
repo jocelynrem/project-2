@@ -5,7 +5,7 @@ const Admin = require('../../models/Admin');
 router.post('/signup', async (req, res) => {
   try {
     const adminData = await Admin.create(req.body);
-    console.log('userData:', adminData);
+    // console.log('userData:', adminData);
 
     req.session.save(() => {
       req.session.adminId = adminData.adminId;
