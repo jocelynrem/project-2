@@ -7,7 +7,7 @@ const express = require('express');
 // to be used to session creation
 const session = require('express-session');
 
-// to be used for halndlebars templates
+// to be used for handlebars templates
 // const exphbs = require('express-handlebars');
 
 // importing routes
