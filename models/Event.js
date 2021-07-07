@@ -14,33 +14,31 @@ Event.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true,
+      autoIncrement: true
     },
     adminId: {
-        type: Datatypes.INTEGER,
-        allowNull: false,
-        references: {
-            model: 'admin',
-            key: 'adminId',
-        }
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'admin',
+        key: 'adminId'
+      }
     },
     eventName: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     QRCode: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-
-
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: false,
-    modelName: 'event',
+    modelName: 'event'
   }
 );
 
