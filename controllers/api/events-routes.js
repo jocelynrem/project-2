@@ -1,13 +1,10 @@
 const router = require('express').Router();
 const { Event, Guest } = require('../../models');
 
-// once Event table on mysql is created, here we need to import the event model
-// const Event = require('../../models/Event');  <== uncomment when event model is created
-
-router.get('/', (req, res) => {
-  // find all events
+router.get('/', async (req, res) => {
   try {
-    res.status(200).json({ message: 'api route for all Events Data' });
+    const eventData = await Event.findAll();
+    res.status(200).json(eventData);
   } catch (err) {
     res.status(500).json(err);
   }
