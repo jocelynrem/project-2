@@ -22,7 +22,11 @@ router.post('/signup', async (req, res) => {
 // use for Admin login
 router.post('/login', async (req, res) => {
   try {
-    const adminData = await Admin.findOne({ where: { email: req.body.email } });
+    const adminData = await Admin.findOne({
+      where: {
+        email: req.body.email
+      }
+    });
 
     if (!adminData) {
       res
