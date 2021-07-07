@@ -16,14 +16,6 @@ Guest.init(
       primaryKey: true,
       autoIncrement: true
     },
-    eventId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'event',
-        key: 'eventId'
-      }
-    },
     firstName: {
       type: DataTypes.STRING,
       allowNull: false
@@ -32,13 +24,21 @@ Guest.init(
       type: DataTypes.STRING,
       allowNull: false
     },
-    guestPic: {
-      type: DataTypes.STRING,
-      allowNull: true
-    },
     tableNumber: {
       type: DataTypes.INTEGER,
       allowNull: false
+    },
+    eventId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'event',
+        key: 'eventId'
+      }
+    },
+    guestPic: {
+      type: DataTypes.STRING,
+      allowNull: true
     }
   },
   {
