@@ -5,7 +5,7 @@ const withAuth = require('../utils/auth'); // to be used for authenticated route
 router.get('/', async (req, res) => {
   try {
     console.log('went to root page route');
-    res.status(200).json({ message: 'here is where the main page should be' });
+    res.render('dashboard');
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
