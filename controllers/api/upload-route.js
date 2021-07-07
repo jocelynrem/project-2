@@ -58,7 +58,7 @@ function importCsvData2MySQL (filePath) {
       console.log(csvData[0][1]);
 
       for (let index = 0; index < csvData.length; index++) {
-        csvData[index][3] = '1';
+        csvData[index][3] = '2';
       }
 
       // Create a connection to the database
