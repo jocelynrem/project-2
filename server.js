@@ -8,7 +8,7 @@ const express = require('express');
 const session = require('express-session');
 
 // to be used for handlebars templates
-// const exphbs = require('express-handlebars');
+const exphbs = require('express-handlebars');
 
 // importing routes
 const routes = require('./controllers');
@@ -43,9 +43,9 @@ const sess = {
 app.use(session(sess));
 
 // to be turned on if handlebars is used
-// const hbs = exphbs.create({});
-// app.engine('handlebars', hbs.engine);
-// app.set('view engine', 'handlebars');
+const hbs = exphbs.create({});
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
