@@ -62,11 +62,11 @@ function importCsvData2MySQL (filePath) {
       }
 
       // Create a connection to the database
-      const connection = () => {
+      const connector = () => {
         if (process.env.JAWSDB_URL) {
-          mysql.createConnection(process.env.JAWSDB_URL);
+          return mysql.createConnection(process.env.JAWSDB_URL);
         } else {
-          mysql.createConnection({
+          return mysql.createConnection({
             host: 'localhost',
             user: process.env.DB_USER,
             password: process.env.DB_PASSWORD,
@@ -74,6 +74,7 @@ function importCsvData2MySQL (filePath) {
           });
         }
       };
+      const connection = connector();
 
       // Open the MySQL connection
       connection.connect((error) => {
