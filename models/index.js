@@ -1,5 +1,5 @@
 // import models
-const Admin = require('./Product');
+const Admin = require('./Admin');
 const Event = require('./Event');
 const Guest = require('./Guest');
 
