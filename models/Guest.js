@@ -14,40 +14,39 @@ Guest.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true,
+      autoIncrement: true
     },
     eventId: {
-        type: Datatypes.INTEGER,
-        allowNull: false,
-        references: {
-            model: 'event',
-            key: 'eventId',
-        }
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'event',
+        key: 'eventId'
+      }
     },
     firstName: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     lastName: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     guestPic: {
-        type: DataTypes.STRING,
-        allowNull: true,
+      type: DataTypes.STRING,
+      allowNull: true
     },
     tableNumber: {
-        type: Datatypes.INTEGER,
-        allowNull: false,
+      type: DataTypes.INTEGER,
+      allowNull: false
     }
-
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: false,
-    modelName: 'guest',
+    modelName: 'guest'
   }
 );
 
