@@ -31,9 +31,11 @@ router.get('/createaccount', async (req, res) => {
 // route for dashboard
 router.get(
   '/dashboard/:adminId',
-  /* withAuth, */ async (req, res) => {
+  withAuth, async (req, res) => {
     try {
-      res.render('dashboard');
+      res.render('dashboard', {
+        loggedIn: req.session.loggedIn
+      });
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
