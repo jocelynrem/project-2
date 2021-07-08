@@ -17,7 +17,6 @@ router.get('/:eventId', async (req, res) => {
 });
 
 // gets all guest by table number
-
 router.get('/:eventId/:tableNum', async (req, res) => {
   try {
     const tableData = await Guest.findAll({
@@ -53,6 +52,20 @@ router.put('/:eventId/update', async (req, res) => {
     } else {
       res.status(400).json({ message: 'no user was found' });
     };
+  } catch (err) {
+    res.status(500).json(err);
+    console.log('err:', err);
+  }
+});
+
+// create a new guest manually
+router.post('/:eventId/new', async (req, res) => {
+  try {
+    console.log('req.body:', req.body);
+    req.body.eventId = req.params.eventId;
+    console.log('req.body:', req.body);
+    const guestData = await Guest.create(req.body);
+    res.status(200).json(guestData);
   } catch (err) {
     res.status(500).json(err);
     console.log('err:', err);
