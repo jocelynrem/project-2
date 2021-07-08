@@ -1,31 +1,42 @@
- <div class="card col-md-6" style="width: 18rem;">
-  <img class="card-img-top" src=".../100px180/?text=Image cap" alt="Card image cap">
-  <div class="card-body">
-    <h2>Create Your Account</h2>  
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+<div class="container-md mt-5 bg-light p-5">
+  <div class="row">
+    <div class="d-grid col-5 mx-auto align-self-start">
+      <div class="card col-md-6" style="width: 18rem;">
+        <img class="card-img-top" src=".../100px180/?text=Image cap" alt="Card image cap">
+        <div class="card-body bg-dark">
+          <h4 class="bg-danger p-2 text-light">Create Your Account</h4>
+          <p class="card-text text-light">Some quick example text to build on the card title and make up the bulk of the card's
+            content.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-1"></div>
+    <div class="col">
+      <form class="">
+        <div class="mb-3">
+          <label for="name-signup">Name</label>
+          <input type="text" class="form-control" id="name-signup" placeholder="John Doe">
+        </div>
+        <div class="mb-3">
+          <label for="email-signup">Email</label>
+          <input type="text" class="form-control" id="email-signup" placeholder="email">
+        </div>
+        <div class="mb-3">
+          <label for="password-signup">Create Password</label>
+          <input type="text" class="form-control" id="password-signup" placeholder="password">
+        </div>
+        <div class="mb-3">
+          <label for="password-signup">Confirm Password</label>
+          <input type="text" class="form-control" id="password-signup" placeholder="password">
+        </div>
+        <div class="d-grid justify-content-md-end">
+          <button type="submit" class="btn btn-primary text-light" href='/dashboard/:id'>Register</button>
+        </div>
+      </form>
+
+    </div>
+    <div class="col-1"></div>
   </div>
 </div>
- 
-<div class="col-md-6">
-    <form class="form signup-form">
-      <div class="form-group">
-        <label for="name-signup">Name</label>
-        <input class="form-input" type="text" id="name-signup" placeholder="John Doe"/>
-      </div>
-      <div class="form-group">
-        <label for="email-signup">E-mail</label>
-        <input class="form-input" type="text" id="email-signup" placeholder="example@email.com"/>
-      </div>
-      <div class="form-group">
-        <label for="password-signup">Create Password</label>
-        <input class="form-input" type="password" id="password-signup" placeholder="abc1234"/>
-      </div>
-      <div class="form-group">
-        <label for="password-signup">Confirm Password</label>
-        <input class="form-input" type="password" id="password-signup" placeholder="abc1234"/>
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">Register</button>
-      </div>
-    </form>
-</div>
+

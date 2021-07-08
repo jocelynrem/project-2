@@ -1,23 +1,24 @@
 <div class="container-md mt-5 bg-light p-5">
     <div class="row">
         <div class="d-grid col-5 mx-auto align-self-start">
-            <button class="btn btn-primary text-light height-" type="button">Create Account <img src="../img/ArrowRight.png" class="ms-2" alt="arrow right"></button>
+            <button class="btn btn-primary text-light p-3" type="button">Create Account <img src="../img/ArrowRight.png" class="ms-2" alt="arrow right"></button>
         </div>
         <div class="col-1"></div>
         <div class="col">
             <h5 class="text-dark">Have an account? Sign In:</h5>
-            <form>
+            <form class="">
                 <div class="mb-3">
                     <input type="text" class="form-control" id="inputEmail" placeholder="email">
                 </div>
                 <div class="mb-3">
                     <input type="text" class="form-control" id="inputPassword" placeholder="password">
                 </div>
-                <button type="submit" class="btn btn-primary text-light">Sign in</button>
+                <div class="d-grid justify-content-md-end">
+                    <button type="submit" class="btn btn-primary text-light" href='/dashboard/:id'>Sign in</button>
+                </div>
             </form>
             
         </div>
-        
         <div class="col-1"></div>
     </div>
 </div>
