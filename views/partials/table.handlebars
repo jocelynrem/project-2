@@ -1,0 +1,10 @@
+        <div class="card m-3">
+          <div class="card-header">
+            Table {{guest.tableNumber}}
+          </div>
+          <div class="card-body bg-light">
+              {{#with guest.tableNumber}}
+            {{guest.firstName}} {{guest.lastName}} <br>
+            {{/with}}
+          </div>
+        </div>
