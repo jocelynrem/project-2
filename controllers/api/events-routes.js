@@ -40,4 +40,18 @@ router.get('/:adminId/:eventId', async (req, res) => {
   }
 });
 
+// creates an event for the admin
+router.post('/:adminId', async (req, res) => {
+  try {
+    const eventData = await Event.create({
+      adminId: req.params.adminId,
+      eventName: req.body.eventName,
+      QRCode: req.body.QRCode // temp fix until we use QRCode generator
+    });
+    res.status(200).json(eventData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
