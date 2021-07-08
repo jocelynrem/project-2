@@ -90,7 +90,7 @@ router.get(
 
 // route for view seating for tables/guests for a specific event
 
-// route for view seatting page
+// route for view seating page
 router.get(
   '/viewseating/:adminId/:eventId',
   /* withAuth, */ async (req, res) => {
