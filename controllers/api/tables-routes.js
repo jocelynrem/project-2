@@ -1,14 +1,61 @@
 const router = require('express').Router();
 
-// once Tables table on mysql is created, here we need to import the table model
-// const Table = require('../../models/Tables');  <== uncomment when tables model is created
+const { Guest } = require('../../models');
 
-router.get('/', (req, res) => {
-  // find all table
+// get all guests by eventId
+router.get('/:eventId', async (req, res) => {
   try {
-    res.status(200).json({ message: 'api route for all Tables Data' });
+    const tableData = await Guest.findAll({
+      where: {
+        eventId: req.params.eventId
+      }
+    });
+    res.status(200).json(tableData);
   } catch (err) {
     res.status(500).json(err);
+  }
+});
+
+// gets all guest by table number
+
+router.get('/:eventId/:tableNum', async (req, res) => {
+  try {
+    const tableData = await Guest.findAll({
+      where: {
+        eventId: req.params.eventId,
+        tableNumber: req.params.tableNum
+      }
+    });
+
+    if (tableData.length > 0) {
+      res.status(200).json(tableData);
+    } else {
+      res.status(400).json({ message: 'Either table or event is incorrect. Please verify that you entered the right information' });
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.put('/:eventId/update', async (req, res) => {
+  try {
+    console.log('req.body:', req.body);
+    const guestData = await Guest.update(req.body,
+      {
+        where: {
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          eventId: req.params.eventId
+        }
+      });
+    if (guestData.length > 0) {
+      res.status(200).json(guestData);
+    } else {
+      res.status(400).json({ message: 'no user was found' });
+    };
+  } catch (err) {
+    res.status(500).json(err);
+    console.log('err:', err);
   }
 });
 
