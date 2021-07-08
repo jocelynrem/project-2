@@ -8,7 +8,9 @@ const withAuth = require('../utils/auth'); // to be used for authenticated route
 router.get('/', async (req, res) => {
   try {
     console.log('went to root page route');
-    res.render('login');
+    res.render('login', {
+      loggedIn: req.session.loggedIn
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
