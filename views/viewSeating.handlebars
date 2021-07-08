@@ -14,14 +14,9 @@
       </div>
 
       <div class="col-2">
-        <div class="card m-3">
-          <div class="card-header">
-            Table Number
-          </div>
-          <div class="card-body bg-light">
-            This is some text within a card body.
-          </div>
-        </div>
+        {{#each table}}
+          {{> table}}
+        {{/each}}
       </div>
     </div>
   </div>
