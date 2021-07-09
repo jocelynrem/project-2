@@ -13,12 +13,11 @@
         </ul>
 
         <div>
-          {{#each finalGuests}}
+          {{#each guests}}
           <li>{{this.table}}</li>
+          <li>{{this.guests}} </li>
           {{/each}}
-            {{#each finalGuests}}
-              <li>{{this.firstName}} {{this.lastName}} {{this.tableNumber}} </li>
-            {{/each}}
+
         </div>
       </div>
     </div>
