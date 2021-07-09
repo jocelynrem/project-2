@@ -118,10 +118,43 @@ router.get(
           ['tableNumber', 'ASC']
       ]
       });
+      const tables = await Guest.aggregate('tableNumber', 'DISTINCT', {
+        plain: false,
+      });
+      console.log('tableNum:', tables)
+
+      const tableNum = tables.map(table => {
+        return table.DISTINCT
+      })
+      
+      
+      
       const events = eventData.map((event) => event.get({ plain: true }));
-      console.log('events:', events);
       const guests = guestData.map((guest) => guest.get({ plain: true }));
-      console.log('guests:', guests.length);
+      
+      const finalGuests = [];
+      for (let y = 0; y < tableNum.length; y++) {
+        let tableChart = [];
+        for (let index = 0; index < guests.length; index++) {
+          if (guests[index].tableNumber === tableNum[y]) {
+            tableChart.push({name: `${guests[index].firstName} ${guests[index].lastName}`})
+          }
+        }
+        finalGuests[y] = 
+        {
+          table: tableNum[y], 
+          guests: tableChart
+        }
+        
+        tableChart = []
+      }
+      console.log('finalGuests:', finalGuests)
+      console.log('accessing', finalGuests[0].guests)
+      console.log('events:', events)
+      console.log('tableNum:', tableNum);
+      
+      
+      
 
       // for (let index = 0; index < guests.length; index++) {
       //   const element = array[index];
@@ -130,7 +163,7 @@ router.get(
 
       res.render('tables', {
         events: events,
-        guests: guests
+        guests: finalGuests
       }); // passing the events for the specific admin for handlebars
     } catch (err) {
       console.log(err);
