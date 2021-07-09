@@ -8,9 +8,15 @@
         </a>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
           {{#each events}}
-            <li><a class="dropdown-item" href="../tables/{{adminId}}?eventId={{this.eventId}}">{{this.eventName}}</a></li>
+            <li><a class="dropdown-item" href="?eventId={{this.eventId}}">{{this.eventName}}</a></li>
           {{/each}}
         </ul>
+
+        <div>
+            {{#each guests}}
+              <li>{{this.firstName}} {{this.lastName}} {{this.tableNumber}} </li>
+            {{/each}}
+        </div>
       </div>
     </div>
   </div>
