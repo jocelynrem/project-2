@@ -10,7 +10,6 @@ router.post('/signup', async (req, res) => {
     req.session.save(() => {
       req.session.adminId = adminData.adminId;
       req.session.loggedIn = true;
-      // console.log('req!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', req);
 
       res.status(200).json(adminData);
     });
@@ -27,6 +26,7 @@ router.post('/login', async (req, res) => {
         email: req.body.email
       }
     });
+    console.log('adminData:', adminData.adminId);
 
     if (!adminData) {
       res
