@@ -18,7 +18,7 @@ const signupFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace('/dashboard/santiago');
+      document.location.replace('/dashboard/{{santiago}}');
     } else {
       alert('Failed to sign up.');
     }
