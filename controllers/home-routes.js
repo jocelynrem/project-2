@@ -99,29 +99,39 @@ router.get(
   }
 );
 
-// route for view seating page
+// route for view seating page WITH QUERY PARAMENTER
 router.get(
-  '/viewseating/:adminId/',
+  '/tables/:adminId/',
   /* withAuth, */ async (req, res) => {
     try {
       const eventData = await Event.findAll({
         where: {
-          adminId: req.params.adminId,
-          eventId: req.query.eventId
+          adminId: req.params.adminId
         }
       });
       // console.log('eventData:', eventData);
       const guestData = await Guest.findAll({
         where: {
           eventId: req.query.eventId
-        }
+        },
+        order: [
+          ['tableNumber', 'ASC']
+      ]
       });
       const events = eventData.map((event) => event.get({ plain: true }));
       console.log('events:', events);
       const guests = guestData.map((guest) => guest.get({ plain: true }));
-      console.log('guests:', guests);
+      console.log('guests:', guests.length);
 
-      res.render('viewSeating', {}); // passing the events for the specific admin for handlebars
+      // for (let index = 0; index < guests.length; index++) {
+      //   const element = array[index];
+        
+      // }
+
+      res.render('tables', {
+        events: events,
+        guests: guests
+      }); // passing the events for the specific admin for handlebars
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
