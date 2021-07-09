@@ -9,7 +9,9 @@ router.get('/', async (req, res) => {
   try {
     console.log('went to root page route');
     res.render('login', {
-      loggedIn: req.session.loggedIn
+      loggedIn: req.session.loggedIn,
+      adminId: req.session.adminId
+
     });
   } catch (err) {
     console.log(err);
