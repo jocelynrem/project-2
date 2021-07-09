@@ -2,12 +2,12 @@ const { Event } = require('../models');
 
 const eventData = [
   {
-    adminId: 1,
+    adminId: 3,
     eventName: 'Graduation',
     QRCode: 'sample.jpg'
   },
   {
-    adminId: 1,
+    adminId: 3,
     eventName: 'Funeral',
     QRCode: 'sample2.jpg'
   }

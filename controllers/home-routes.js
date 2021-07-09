@@ -46,7 +46,7 @@ router.get('/dashboard/:adminId', withAuth, async (req, res) => {
 // route for createSeating
 router.get(
   '/upload/:adminId',
-  /* withAuth, */ async (req, res) => {
+  withAuth, async (req, res) => {
     try {
       res.render('createSeating', {
         loggedIn: req.session.loggedIn,
@@ -62,7 +62,7 @@ router.get(
 // route for the theme page
 router.get(
   '/theme/:adminId',
-  /* withAuth, */ async (req, res) => {
+  withAuth, async (req, res) => {
     try {
       res.render('theme', {
         loggedIn: req.session.loggedIn,
@@ -100,7 +100,7 @@ router.get('/viewseating/:adminId', withAuth, async (req, res) => {
 // route for view seating page WITH QUERY PARAMENTER
 router.get(
   '/tables/:adminId/',
-  /* withAuth, */ async (req, res) => {
+  withAuth, async (req, res) => {
     try {
       const eventData = await Event.findAll({
         where: {
