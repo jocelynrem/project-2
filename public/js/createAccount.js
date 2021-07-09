@@ -28,7 +28,7 @@ document
   .addEventListener('click', signupFormHandler);
 
 function showPassword() {
-  var x = document.getElementById("inputPassword");
+  var x = document.getElementById("password-signup");
   if (x.type === "password") {
     x.type = "text";
   } else {
