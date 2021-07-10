@@ -182,9 +182,9 @@ router.get(
 );
 
 // route for guest view seating page
-router.get('/guestView', async (req, res) => {
+router.get('/guestpage', async (req, res) => {
   try {
-    res.render('guestView', {
+    res.render('guestPage', {
 
     }); // passing the events for the specific admin for handlebars
   } catch (err) {
