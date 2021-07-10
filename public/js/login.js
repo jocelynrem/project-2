@@ -21,12 +21,12 @@ const loginFormHandler = async (event) => {
   }
 };
 
-function showPassword() {
-  var x = document.getElementById("inputPassword");
-  if (x.type === "password") {
-    x.type = "text";
+function showPassword () {
+  const x = document.getElementById('inputPassword');
+  if (x.type === 'password') {
+    x.type = 'text';
   } else {
-    x.type = "password";
+    x.type = 'password';
   }
 }
 
