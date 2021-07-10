@@ -75,6 +75,22 @@ router.get(
   }
 );
 
+// route for the QR code page
+router.get(
+  '/QR/:adminId',
+  /* withAuth, */ async (req, res) => {
+    try {
+      res.render('QR', {
+        loggedIn: req.session.loggedIn,
+        adminId: req.session.adminId
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  }
+);
+
 // route for view seating page
 router.get('/viewseating/:adminId', withAuth, async (req, res) => {
   try {
@@ -114,10 +130,6 @@ router.get(
         },
         order: [['tableNumber', 'ASC']]
       });
-      // const tables = await Guest.aggregate('tableNumber', 'DISTINCT', {
-      //   plain: false,
-      // });
-      // console.log('tableNum:', tables)
 
       const tablesFromGuests = await Guest.findAll({
         attributes: [
