@@ -1,0 +1,28 @@
+<body>
+    <header class="guestView">
+        <div class="container text-center">
+          <h1>Let's party!</h1>
+        </div>
+    </header>
+    
+      <section class="guestViewContainer">
+        <!-- User Search  -->
+        <div class="row">
+          <div class="searchBox m-3 sm-12">
+              <h3 class="searchInputHeader">To find your table, enter your first and last name:</h3>
+              <div class="ui-widget">
+                <input type="text" id="searchInput"></input>    
+              </div>
+              <br>
+                <button type="button" class="btn btn-outline-dark" id="searchBtn">Search</button>
+          </div>
+          <div class= "tableData">
+              <ul class="viewTableData">
+                {{#each guests}}
+                {{> table}}
+                {{/each}}  
+              </ul>
+        </div>  
+      </section>
+        <script src="/js/guestView.js"></script>
+</body>

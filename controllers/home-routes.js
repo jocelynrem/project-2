@@ -181,4 +181,16 @@ router.get(
   }
 );
 
+// route for guest view seating page
+router.get('/guestpage', async (req, res) => {
+  try {
+    res.render('guestPage', {
+
+    }); // passing the events for the specific admin for handlebars
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
