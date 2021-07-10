@@ -1,12 +1,14 @@
-<div class="card m-3">
-    <div class="card-header">
-        Table {{guest.tableNumber}}
+
+<div class="card m-3 col-sm-2">
+    <div class="card-header bg-dark text-light text-center font-monospace pt-3">
+       <h5 class="center">TABLE {{this.table}}</h5> 
     </div>
     <div class="card-body bg-light">
-        {{#each tableNumber}}
-            <div>
-                {{firstName}} {{lastName}}
-            </div>
-        {{/with}}
+        <div class="guestList">
+            {{ this.guests }}
+        </div>
     </div>
 </div>
+
+
+

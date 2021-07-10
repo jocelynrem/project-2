@@ -1,26 +1,28 @@
-<div class="card">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
+<div class="container-sm mt-5 bg-light p-5">
+  {{> backToDashboard}}
+
+  <div class="d-flex justify-content-center">
+    <div class="d-grid align-items-start">
+
+      <div class="card col-sm-3 me-5 shadow text-center" style="width: 15rem; height: 8rem;">
+        <label for="exampleColorInput" class="form-label">Color picker</label>
+        <input type="color" class="form-control form-control-color m-2" id="exampleColorInput" value="#563d7c"
+          title="Choose your color">
+        <div class="card-body bg-dark bg-gradient">
+          <h4 class="text-light text-center"> THEME COLOR 1</h4>
+        </div>
+      </div>
+
+      <div class="card col-sm-3 me-5 shadow text-center" style="width: 15rem; height: 8rem;">
+        <label for="exampleColorInput" class="form-label">Color picker</label>
+        <input type="color" class="form-control form-control-color m-2" id="exampleColorInput" value="#563d7c"
+          title="Choose your color">
+        <div class="card-body bg-dark bg-gradient">
+          <h4 class="text-light text-center"> THEME COLOR 2</h4>
+        </div>
+      </div>
+
+    </div>
+    <div class="card bg-dark ms-5" style="width:18rem; height:34rem;"></div>
   </div>
-  <img src="..." class="card-img-bottom" alt="...">
-</div>
-
-<div class="row mb-3">
-    <h3>Theme Color 1</h3>
-    <label for="exampleColorInput" class="form-label">Color picker</label>
-    <div class="col-sm-10">
-        <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">
-    </div>
-</div>
-
-<div class="row mb-3">
-    <h3>Theme Color 2</h3>
-    <label for="exampleColorInput" class="form-label">Color picker</label>
-    <div class="col-sm-10">
-        <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">
-    </div>
-</div>
-
-<div class="file-upload-wrapper">
-  <input type="file" id="input-file-now" class="file-upload" data-width="250" />
 </div>
