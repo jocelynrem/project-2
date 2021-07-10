@@ -4,8 +4,12 @@
        <h5 class="center">TABLE {{this.table}}</h5> 
     </div>
     <div class="card-body bg-light">
-        <div class="guestList">
-            {{ this.guests }}
+        <div class="">
+    {{#each this.guests}}
+          <div>
+              {{ this }}
+          </div>            
+          {{/each}}
         </div>
     </div>
 </div>
