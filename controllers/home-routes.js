@@ -80,10 +80,19 @@ router.get(
   '/QR/:adminId',
   /* withAuth, */ async (req, res) => {
     try {
+      const eventData = await Event.findAll({
+        where: {
+          adminId: req.params.adminId
+        }
+      });
+
+      const events = eventData.map((event) => event.get({ plain: true }));
+
       res.render('QR', {
         loggedIn: req.session.loggedIn,
-        adminId: req.session.adminId
-      });
+        adminId: req.session.adminId,
+        events: events
+      }); // passing the events for the specific admin for handlebars
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
