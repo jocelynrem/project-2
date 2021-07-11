@@ -8,23 +8,33 @@ const router = require('express').Router();
 const { Guest } = require('../../models');
 
 global.__basedir = __dirname;
+// let stream;
 
 // -> Multer Upload Storage
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, __basedir + '/uploads/');
-    console.log('__basedir:', __basedir);
+    // console.log('__basedir:', __basedir);
   },
   filename: (req, file, cb) => {
     cb(null, file.fieldname + '-' + Date.now() + '-' + file.originalname);
+    // console.log('filename:', file.fieldname + '-' + Date.now() + '-' + file.originalname)
   }
+
 });
 
 const upload = multer({ storage: storage });
+// console.log(storage.filename);
+
+// console.log(__basedir + '/uploads/');
 
 // -> Express Upload RestAPIs
-router.post('/uploadfile/:eventId', upload.single('uploadfile'), (req, res) => {
-  let stream = fs.createReadStream(__basedir + '/uploads/' + req.file.filename);
+router.post('/uploadfile/:eventId', upload.any('uploadfile'), (req, res) => {
+  // console.log('req.files', req.files[0]);
+  // console.log('req.files.filename', req.files[0].filename)
+
+  // console.log(__basedir + '/uploads/');
+  let stream = fs.createReadStream(__basedir + '/uploads/' + req.files[0].filename);
   let csvData = [];
 
   let csvStream = csv
@@ -58,7 +68,7 @@ router.post('/uploadfile/:eventId', upload.single('uploadfile'), (req, res) => {
 
       // delete file after saving to MySQL database
       // -> you can comment the statement to see the uploaded CSV file.
-      fs.unlinkSync(__basedir + '/uploads/' + req.file.filename);
+      fs.unlinkSync(__basedir + '/uploads/' + req.files[0].filename);
     });
 
   stream.pipe(csvStream);
