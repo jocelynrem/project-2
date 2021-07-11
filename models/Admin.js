@@ -11,10 +11,15 @@ class Admin extends Model {
 Admin.init(
   {
     adminId: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV1,
+      allowNull: false
+    },
+    Id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
+      primaryKey: true
     },
     firstName: {
       type: DataTypes.STRING,
