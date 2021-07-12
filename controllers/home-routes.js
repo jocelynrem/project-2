@@ -80,10 +80,19 @@ router.get(
   '/QR/:adminId',
   /* withAuth, */ async (req, res) => {
     try {
+      const eventData = await Event.findAll({
+        where: {
+          adminId: req.params.adminId
+        }
+      });
+
+      const events = eventData.map((event) => event.get({ plain: true }));
+
       res.render('QR', {
         loggedIn: req.session.loggedIn,
-        adminId: req.session.adminId
-      });
+        adminId: req.session.adminId,
+        events: events
+      }); // passing the events for the specific admin for handlebars
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
@@ -184,8 +193,61 @@ router.get(
 // route for guest view seating page
 router.get('/guestpage', async (req, res) => {
   try {
-    res.render('guestPage', {
+    const eventData = await Event.findAll({
+      where: {
+        adminId: req.params.adminId
+      }
+    });
+    // console.log('eventData:', eventData);
+    const guestData = await Guest.findAll({
+      where: {
+        eventId: req.query.eventId
+      },
+      order: [['tableNumber', 'ASC']]
+    });
 
+    const tablesFromGuests = await Guest.findAll({
+      attributes: [
+        [sequelize.fn('DISTINCT', sequelize.col('tableNumber')), 'table']
+      ],
+      where: {
+        eventId: req.query.eventId
+      }
+    });
+
+    const events = eventData.map((event) => event.get({ plain: true }));
+    const guests = guestData.map((guest) => guest.get({ plain: true }));
+    const tables = tablesFromGuests.map((event) =>
+      event.get({ plain: true })
+    );
+
+    const tableNum = tables.map((table) => {
+      return table.table;
+    });
+
+    const finalGuests = [];
+    for (let y = 0; y < tableNum.length; y++) {
+      let tableChart = [];
+      for (let index = 0; index < guests.length; index++) {
+        if (guests[index].tableNumber === tableNum[y]) {
+          tableChart.push(
+            `${guests[index].firstName} ${guests[index].lastName}`
+          );
+        }
+      }
+      finalGuests[y] = {
+        table: tableNum[y],
+        guests: tableChart
+      };
+
+      tableChart = [];
+    }
+
+    res.render('tables', {
+      loggedIn: req.session.loggedIn,
+      adminId: req.session.adminId,
+      events: events,
+      guests: finalGuests
     }); // passing the events for the specific admin for handlebars
   } catch (err) {
     console.log(err);
