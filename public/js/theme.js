@@ -1,21 +1,42 @@
-// const colorOne = document.getElementById('ColorOneInput').value;
-// const colorTwo = $('#ColorTwoInput').val();
 
-// changeColorOne = () => {
-//   const colorOne = document.getElementById('ColorOneInput').value;
-// };
+const colorOne = Pickr.create({
+  el: '.color-picker-one',
+  theme: 'nano',
+  components: {
+    // Main components
+    preview: true,
+    hue: true,
+    // Input / output Options
+    interaction: {
+      hex: true,
+      input: true,
+      save: true
+    }
+  }
+});
 
-// $('#ColorOneInput').on('change', function () {
-//   const newColorOne = this.value;
-//   $('.colorOne').css('background-color', newColorOne);
-// });
+colorOne.on('change', (color, source, instance) => {
+  const colorOneHEXA = color.toHEXA().toString();
+  document.getElementById('guestView').style.background = colorOneHEXA;
+});
 
-const changeColorOne = () => {
-  document.getElementById('ColorOneInput').addEventListener('change', (e) => {
-    const color = e.target.value;
-    console.log('color:', color);
-    document.getElementsByClassName('colorOne').style.backgroundColor = color;
-  });
-};
+const colorTwo = Pickr.create({
+  el: '.color-picker-two',
+  theme: 'nano',
+  components: {
+    // Main components
+    preview: true,
+    hue: true,
+    // Input / output Options
+    interaction: {
+      hex: true,
+      input: true,
+      save: true
+    }
+  }
+});
 
-changeColorOne();
+colorTwo.on('change', (color, source, instance) => {
+  const colorTwoHEXA = color.toHEXA().toString();
+  document.getElementById('guestViewTwo').style.background = colorTwoHEXA;
+});
