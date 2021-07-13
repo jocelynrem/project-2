@@ -10,15 +10,16 @@
 </head>
 
 <body class="bg-secondary">
-    <nav class="navbar navbar-expand-lg bg-dark">
-        <div class="container navbar-dark">
-            <img src="../img/logo_light.png" class="navbar-brand me-5" alt="Be|Seated logo" width="30%">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <img src="../img/logo_light.png" class="navbar-brand" alt="Be|Seated logo" width="30%">
             <button class="navbar-toggler m-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             
-            <div class="collapse nav navbar-collapse align-items-end ms-5" id="navbarText">
+            <div class="collapse navbar-collapse" id="navbarText">
+                <div class="navbar-nav ms-auto">
                 {{#if loggedIn}}
                     <a class="nav-link nav-item" href='/viewseating/{{adminId}}'>SEATING</a>
                     <a class="nav-link nav-item" href='/upload/{{adminId}}'>UPLOAD</a>
@@ -29,6 +30,7 @@
                     <a class="nav-link nav-item" href="/createaccount">CREATE ACCOUNT</a>
                     <a href="/"><button class="btn btn-light me-2 grow ms-3 me-3 nav-item shadow-sm" type="button">Sign In</button></a>
                 {{/if}}
+                </div>
             </div>
         </div>
     </nav>

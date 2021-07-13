@@ -16,6 +16,11 @@ Admin.init(
       primaryKey: true,
       autoIncrement: true
     },
+    urlId: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV1,
+      allowNull: false
+    },
     firstName: {
       type: DataTypes.STRING,
       allowNull: false

@@ -1,6 +1,61 @@
 <div class="container-md mt-5 bg-light p-5">
     {{> backToDashboard}}
 
-    <h1>Create Seating</h1>
+    <h1>Create Seating</h1> 
+   
+    
+<form 
+{{!-- action="/action_page.php" --}}
+>
+  <input type="file" id="myFile" name="uploadfile">
+  <input type="submit" class="submitButton">
+</form>
 
-</div>
+
+
+
+
+<script>
+
+//var fs = require('fs');
+
+//var cookieValue = connect.utils.parseSignedCookies(cookie, sessionKey);
+//console.log(cookieValue)
+//console.log(document.cookie)
+//console.log(document.cookie['connect.sid']);
+let cookie = document.cookie
+console.log(window.location.href)
+let href = window.location.href.split('/')
+console.log(href)
+let eventid = href[href.length - 1]
+console.log('../api/file/uploadfile/'+eventid)
+
+const uploadFormHandler = async (event) => {
+    event.preventDefault();
+  
+    let uploadfile = document.getElementById('myFile').files[0];
+    let formData = new FormData();
+    formData.append('uploadfile', uploadfile)
+    //const reader = new FileReader();
+
+    console.log(uploadfile)
+        console.log(formData)
+    //console.log(reader.readAsText(myFile))
+  
+
+const response = await fetch(`../api/file/uploadfile/${eventid}`, {
+     method: 'POST',
+      body: formData,
+     headers: {    "Cookie": cookie  }
+     // headers: { "Content-Type": "multipart/form-data" }
+   });
+    //fetch('api/file/uploadfile/4', {method: "POST", body: formData});
+
+}
+  
+document
+    .querySelector('.submitButton')
+    .addEventListener('click', uploadFormHandler);
+    
+
+</script>
