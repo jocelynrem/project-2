@@ -7,18 +7,19 @@
     <div class="d-grid gap-3 align-content-start flex-wrap">
 
       <div class="card col-sm-3 shadow-sm m-2 text-center w-75">
-        <div class="align-middle">
-          <input type="color" class="form-control-color m-4" id="ColorOneInput" value="#563d7c" title="Color One">
+        <div class="m-2">
+          <div class="color-picker-one">
+          </div>
         </div>
-
-        <div class="card-body bg-gradient colorOne" style="background-color: gray;">
+        <div class="card-body bg-secondary bg-gradient">
           <h4 class="text-dark text-center"> THEME COLOR 1</h4>
         </div>
       </div>
 
       <div class="card col-sm-3 shadow-sm m-2 text-center w-75">
-        <div class="align-middle">
-          <input type="color" class="form-control-color m-4" id="ColorTwoInput" value="#563d7c" title="Color Two">
+        <div class="m-2">
+          <div class="color-picker-two">
+          </div>
         </div>
         <div class="card-body bg-secondary bg-gradient">
           <h4 class="text-dark text-center"> THEME COLOR 2</h4>
@@ -26,21 +27,12 @@
       </div>
     </div>
 
-    <div class="card colorOne ms-5 shadow" style="width:18rem; height:34rem;">
-      <h5 class="card-header text-dark bg-light">Guest View</h5>
+    <div class="card ms-5 shadow" id="guestView" style="width:18rem; height:34rem;">
+      <h5 class="card-header text-dark" id="guestViewTwo">Guest View</h5>
       {{!-- {{guestView}} --}}
     </div>
   </div>
 </div>
 
-  <script>
-    const changeColorOne = () => {
-  document.getElementById('ColorOneInput').addEventListener('change', (e) => {
-    const color = e.target.value;
-    console.log('color:', color);
-    document.getElementsByClassName('colorOne').style.backgroundColor = color;
-  });
-};
-
-changeColorOne();
-  </script>
+<script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
+<script src="/js/theme.js"></script>
