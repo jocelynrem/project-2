@@ -1,6 +1,7 @@
 const input = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchBtn');
 
+// Need to work with Rob on rendering the eventId
 searchButton.addEventListener ('click', (e) => {
   console.log(input.value.trim());
   const searchParams = (new URL (document.location)).searchParams;
