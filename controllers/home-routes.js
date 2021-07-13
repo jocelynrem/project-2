@@ -252,7 +252,7 @@ router.get('/guestView', async (req, res) => {
     }
 
     console.log('finalGuests:', finalGuests);
-    res.render('guestView', {
+    res.render('guestView', { layout: false }, {
       guests: finalGuests,
       allGuests
     }); // passing the events for the specific admin for handlebars
