@@ -31,6 +31,22 @@ router.get('/createaccount', async (req, res) => {
   }
 });
 
+// create account page
+router.get(
+  '/createevent/:adminId',
+  withAuth, async (req, res) => {
+    try {
+      res.render('createEvent', {
+        loggedIn: req.session.loggedIn,
+        adminId: req.session.adminId
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  }
+);
+
 // route for dashboard
 router.get('/dashboard/:adminId', withAuth, async (req, res) => {
   try {
@@ -45,20 +61,51 @@ router.get('/dashboard/:adminId', withAuth, async (req, res) => {
 });
 
 // route for createSeating
-router.get(
-  '/upload/:adminId',
-  withAuth, async (req, res) => {
-    try {
-      res.render('createSeating', {
-        loggedIn: req.session.loggedIn,
-        adminId: req.session.adminId
-      });
-    } catch (err) {
-      console.log(err);
-      res.status(500).json(err);
-    }
+router.get('/upload/:adminId', withAuth, async (req, res) => {
+  try {
+    const eventData = await Event.findAll({
+      where: {
+        adminId: req.params.adminId
+      }
+    });
+    const events = eventData.map((event) => event.get({ plain: true }));
+
+    res.render('createSeating', {
+      loggedIn: req.session.loggedIn,
+      adminId: req.session.adminId,
+      events: events
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
   }
+}
 );
+
+router.get('/upload/:adminId/:eventId', withAuth, async (req, res) => {
+  try {
+    const eventData = await Event.findAll({
+      where: {
+        adminId: req.params.adminId
+      }
+    });
+    const events = eventData.map((event) => event.get({ plain: true }));
+
+    res.render('createSeating', {
+      loggedIn: req.session.loggedIn,
+      adminId: req.session.adminId,
+      events: events
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+}
+);
+
+
+
+
 
 // route for the theme page
 router.get(
