@@ -15,7 +15,7 @@ const colorOne = Pickr.create({
   }
 });
 
-colorOne.on('change', (color, source, instance) => {
+colorOne.on('change', (color) => {
   const colorOneHEXA = color.toHEXA().toString();
   document.getElementById('guestView').style.background = colorOneHEXA;
 });
@@ -36,7 +36,19 @@ const colorTwo = Pickr.create({
   }
 });
 
-colorTwo.on('change', (color, source, instance) => {
+colorTwo.on('change', (color) => {
   const colorTwoHEXA = color.toHEXA().toString();
   document.getElementById('guestViewTwo').style.background = colorTwoHEXA;
+});
+
+const darkTextColor = document.getElementById('darkTextButton');
+
+darkTextColor.on('click', function () {
+  document.getElementById('guestText').style.color = 'black';
+});
+
+const lightTextColor = document.getElementById('lightTextButton');
+
+lightTextColor.addEventListener('click', function () {
+  document.getElementsById('guestText').style.color = 'white';
 });
