@@ -197,20 +197,31 @@ router.get('/guestView', async (req, res) => {
     const names = req.query.fullName.split(' ');
     const firstName = names[0];
     const lastName = names.length > 1 && names[1];
+    // const guestTable = await Guest.findAll({
+    //   attributes: [[sequelize.fn('DISTINCT', sequelize.col('tableNumber')), 'table']],
+    //   where: {
+    //     firstName,
+    //     lastName,
+    //     eventId: req.query.eventId
+    //   }
+    // });
+
     const guestTable = await Guest.findAll({
-      attributes: [[sequelize.fn('DISTINCT', sequelize.col('tableNumber')), 'table']],
       where: {
-        firstName,
-        lastName,
+        firstName: {
+          [Op.startsWith]: firstName
+        },
+        lastName: lastName,
         eventId: req.query.eventId
       }
     });
 
-    const guestTableData = guestTable.map((event) =>
-      event.get({ plain: true })
-    );
+
+    const guestTableData = guestTable.map((event) => event.get({ plain: true }));
     console.log(guestTableData)
-    const tableNumbers = guestTableData.map(table => table.table);
+
+    // const tableNumbers = guestTableData.map(table => table.table);  Liz
+    const tableNumbers = guestTableData.map(table => table.tableNumber);
 
     const guestData = await Guest.findAll({
       where: {
@@ -219,8 +230,10 @@ router.get('/guestView', async (req, res) => {
     });
 
     const guests = guestData.map((guest) => guest.get({ plain: true }));
+    // console.log('guests:', guests)
 
     const allGuests = (await Guest.findAll()).map(guest => guest.get({ plain: true }));
+    console.log('allGuests:@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@', allGuests)
 
     const finalGuests = [];
     for (let i = 0; i < tableNumbers.length; i++) {
