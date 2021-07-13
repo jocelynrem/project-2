@@ -1,0 +1,23 @@
+<body>
+    <header class="guestView">
+        <div class="container text-center">
+          <h1>Let's party!</h1>
+        </div>
+    </header>
+    
+      <section class="guestViewContainer">
+        <!-- User Search  -->
+        
+          {{#if guests}}
+          <div class="border border-dark rounded  d-flex mt-2">
+            <div class="d-flex flex-wrap justify-content-center">
+              {{#each guests}}
+              {{> table}}
+              {{/each}}
+            </div>
+          </div>
+          {{else}}
+          <div>There were no results found</div>
+          {{/if}}
+      </section>
+</body>
