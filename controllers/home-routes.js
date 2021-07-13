@@ -193,7 +193,6 @@ router.get(
 
 // route for guest view seating page
 router.get('/guestView', async (req, res) => {
-  console.log("I AM HERE!!!!!!!!!!!!!!")
   try {
     const names = req.query.fullName.split(' ');
     const firstName = names[0];
