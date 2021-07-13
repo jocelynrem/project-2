@@ -12,33 +12,23 @@
 </form>
 
 
-{{!-- <input type="file" name="file" id="file">
-<button onclick="doupload()" name="submit">Upload File</button> --}}
 
-{{!-- <form enctype="multipart/form-data" action="/file/uploadfile/4" method="post">
-    <input id="image-file" type="file" />
-</form> --}}
-    {{!-- </div>
-
-</div> --}}
-
-{{!-- 
-<script>
-    function doupload() {
-    let data = document.getElementById("file").files[0];
-    let entry = document.getElementById("file").files[0];
-    console.log('doupload',entry,data)
-     fetch('api/file/uploadfile/4', {method:'PUT',body:data}); 
-    //alert('your file has been uploaded');
-    //location.reload(); --}}
-
-
-{{!-- <script src="./js/uploadSeating.js"></script> --}}
 
 
 <script>
 
 //var fs = require('fs');
+
+//var cookieValue = connect.utils.parseSignedCookies(cookie, sessionKey);
+//console.log(cookieValue)
+//console.log(document.cookie)
+//console.log(document.cookie['connect.sid']);
+let cookie = document.cookie
+console.log(window.location.href)
+let href = window.location.href.split('/')
+console.log(href)
+let eventid = href[href.length - 1]
+console.log('../api/file/uploadfile/'+eventid)
 
 const uploadFormHandler = async (event) => {
     event.preventDefault();
@@ -53,10 +43,10 @@ const uploadFormHandler = async (event) => {
     //console.log(reader.readAsText(myFile))
   
 
-const response = await fetch('../api/file/uploadfile/4', {
+const response = await fetch(`../api/file/uploadfile/${eventid}`, {
      method: 'POST',
       body: formData,
-     headers: {    "Cookie": "connect.sid=s%3ARcs_OtZ1c0WETbqVuJzBo-RFWAg_6Aiz.8pn02q91fZj7sNO5bqrsjROk0NIpb62vtoizzK84j1A"  }
+     headers: {    "Cookie": cookie  }
      // headers: { "Content-Type": "multipart/form-data" }
    });
     //fetch('api/file/uploadfile/4', {method: "POST", body: formData});
