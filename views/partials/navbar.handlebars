@@ -1,0 +1,24 @@
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <img src="../img/logo_light.png" class="navbar-brand me-5" alt="Be|Seated logo" width="30%">
+            <button class="navbar-toggler m-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarText">
+                <div class="navbar-nav ms-auto">
+                {{#if loggedIn}}
+                    <a class="nav-link nav-item" href='/viewseating/{{adminId}}'>SEATING</a>
+                    <a class="nav-link nav-item" href='/upload/{{adminId}}'>UPLOAD</a>
+                    <a class="nav-link nav-item" href='/theme/{{adminId}}'>THEME</a>
+                    <a class="nav-link nav-item" href='/dashboard/{{adminId}}'>DASHBOARD</a>
+                    <a href="/"><button class="btn btn-light me-2 grow ms-3 me-3 nav-item shadow-sm" id="logout" type="button">Sign Out</button></a>
+                {{else}}
+                    <a class="nav-link nav-item" href="/createaccount">CREATE ACCOUNT</a>
+                    <a href="/"><button class="btn btn-light me-2 grow ms-3 me-3 nav-item shadow-sm" type="button">Sign In</button></a>
+                {{/if}}
+                </div>
+            </div>
+        </div>
+    </nav>

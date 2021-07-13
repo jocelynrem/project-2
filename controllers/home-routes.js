@@ -217,20 +217,20 @@ router.get('/guestView', async (req, res) => {
     });
 
     const guestTableData = guestTable.map((event) => event.get({ plain: true }));
-    console.log('guestTableData:', guestTableData)
+    console.log('guestTableData:', guestTableData);
 
     // const tableNumbers = guestTableData.map(table => table.table);  Liz
     const tableNumbers = guestTableData.map(table => table.tableNumber);
-    console.log('tableNumbers:', tableNumbers)
+    console.log('tableNumbers:', tableNumbers);
 
     const guestData = await Guest.findAll({
       where: {
         tableNumber: { [Op.in]: tableNumbers }
       }
     });
-    
+
     const guests = guestData.map((guest) => guest.get({ plain: true }));
-    console.log('guests:', guests)
+    console.log('guests:', guests);
 
     const allGuests = (await Guest.findAll()).map(guest => guest.get({ plain: true }));
 
@@ -241,17 +241,17 @@ router.get('/guestView', async (req, res) => {
         if (guests[index].tableNumber === tableNumbers[i]) {
           tableChart.push(
             `${guests[index].firstName} ${guests[index].lastName}`
-            );
-          }
+          );
         }
-        finalGuests[i] = {
-          table: tableNumbers[i],
-          guests: tableChart
-        };
-        tableChart = [];
       }
-      
-    console.log('finalGuests:', finalGuests)
+      finalGuests[i] = {
+        table: tableNumbers[i],
+        guests: tableChart
+      };
+      tableChart = [];
+    }
+
+    console.log('finalGuests:', finalGuests);
     res.render('guestView', {
       guests: finalGuests,
       allGuests
@@ -263,7 +263,7 @@ router.get('/guestView', async (req, res) => {
 });
 
 router.get('/guestpage', async (req, res) => {
-  res.render('guestPage');
+  res.render('guestPage', { layout: false });
 });
 
 module.exports = router;
