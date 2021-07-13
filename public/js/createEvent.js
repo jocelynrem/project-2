@@ -1,9 +1,9 @@
 const eventFormHandler = async (event) => {
   event.preventDefault();
 
-  let href = window.location.href.split('/')
-  //console.log(href)
-  let adminid = href[href.length - 1]
+  const href = window.location.href.split('/');
+  // console.log(href)
+  const adminid = href[href.length - 1];
   const eventName = document.querySelector('#eventName').value.trim();
 
   if (eventName) {
@@ -16,16 +16,13 @@ const eventFormHandler = async (event) => {
 
     if (response.ok) {
       confirm('Event created');
+      window.location.href = `../upload/${adminid}`;
     } else {
       alert('Failed to sign up.');
     }
-
   }
 };
 
 document
   .querySelector('.register')
   .addEventListener('click', eventFormHandler);
-
-
-
