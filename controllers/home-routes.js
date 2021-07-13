@@ -252,7 +252,7 @@ router.get('/guestView', async (req, res) => {
 });
 
 router.get('/guestpage', async (req, res) => {
-  res.render('guestpage');
+  res.render('guestPage');
 });
 
 module.exports = router;
