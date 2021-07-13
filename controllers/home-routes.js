@@ -193,6 +193,7 @@ router.get(
 
 // route for guest view seating page
 router.get('/guestView', async (req, res) => {
+  console.log("I AM HERE!!!!!!!!!!!!!!")
   try {
     const names = req.query.fullName.split(' ');
     const firstName = names[0];
@@ -209,7 +210,7 @@ router.get('/guestView', async (req, res) => {
     const guestTableData = guestTable.map((event) =>
       event.get({ plain: true })
     );
-
+    console.log(guestTableData)
     const tableNumbers = guestTableData.map(table => table.table);
 
     const guestData = await Guest.findAll({
@@ -239,6 +240,7 @@ router.get('/guestView', async (req, res) => {
 
       tableChart = [];
     }
+
 
     res.render('guestView', {
       guests: finalGuests,
