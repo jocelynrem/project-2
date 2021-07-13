@@ -1,2 +1,12 @@
 <h1>Guest Page</h1>
-{{> guestView}}
+<div class="row">
+    <div class="searchBox m-3 sm-12">
+        <h3 class="searchInputHeader">To find your table, enter your first and last name:</h3>
+        <div class="ui-widget">
+        <input type="text" id="searchInput"></input>    
+        </div>
+        <br>
+        <button type="submit" class="btn btn-outline-dark" id="searchBtn" onclick="renderGuestView">Search</button>
+    </div>
+</div>
+<script src='/js/guestPage.js'></script>

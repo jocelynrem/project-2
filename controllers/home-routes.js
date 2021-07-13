@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
+const { Op } = require('sequelize');
 // eslint-disable-next-line no-unused-vars
 const { Guest, Event } = require('../models');
 // eslint-disable-next-line no-unused-vars
@@ -191,68 +192,66 @@ router.get(
 );
 
 // route for guest view seating page
-router.get('/guestpage', async (req, res) => {
+router.get('/guestView', async (req, res) => {
   try {
-    const eventData = await Event.findAll({
+    const names = req.query.fullName.split(' ');
+    const firstName = names[0];
+    const lastName = names.length > 1 && names[1];
+    const guestTable = await Guest.findAll({
+      attributes: [[sequelize.fn('DISTINCT', sequelize.col('tableNumber')), 'table']],
       where: {
-        adminId: req.params.adminId
-      }
-    });
-    // console.log('eventData:', eventData);
-    const guestData = await Guest.findAll({
-      where: {
-        eventId: req.query.eventId
-      },
-      order: [['tableNumber', 'ASC']]
-    });
-
-    const tablesFromGuests = await Guest.findAll({
-      attributes: [
-        [sequelize.fn('DISTINCT', sequelize.col('tableNumber')), 'table']
-      ],
-      where: {
+        firstName,
+        lastName,
         eventId: req.query.eventId
       }
     });
 
-    const events = eventData.map((event) => event.get({ plain: true }));
-    const guests = guestData.map((guest) => guest.get({ plain: true }));
-    const tables = tablesFromGuests.map((event) =>
+    const guestTableData = guestTable.map((event) =>
       event.get({ plain: true })
     );
 
-    const tableNum = tables.map((table) => {
-      return table.table;
+    const tableNumbers = guestTableData.map(table => table.table);
+
+    const guestData = await Guest.findAll({
+      where: {
+        tableNumber: { [Op.in]: tableNumbers }
+      }
     });
 
+    const guests = guestData.map((guest) => guest.get({ plain: true }));
+
+    const allGuests = (await Guest.findAll()).map(guest => guest.get({ plain: true }));
+
     const finalGuests = [];
-    for (let y = 0; y < tableNum.length; y++) {
+    for (let i = 0; i < tableNumbers.length; i++) {
       let tableChart = [];
       for (let index = 0; index < guests.length; index++) {
-        if (guests[index].tableNumber === tableNum[y]) {
+        if (guests[index].tableNumber === tableNumbers[i]) {
           tableChart.push(
             `${guests[index].firstName} ${guests[index].lastName}`
           );
         }
       }
-      finalGuests[y] = {
-        table: tableNum[y],
+      finalGuests[i] = {
+        table: tableNumbers[i],
         guests: tableChart
       };
 
       tableChart = [];
     }
 
-    res.render('tables', {
-      loggedIn: req.session.loggedIn,
-      adminId: req.session.adminId,
-      events: events,
-      guests: finalGuests
+    res.render('guestView', {
+      guests: finalGuests,
+      allGuests
     }); // passing the events for the specific admin for handlebars
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
+});
+
+router.get('/guestpage', async (req, res) => {
+  res.render('guestpage');
 });
 
 module.exports = router;
