@@ -21,7 +21,7 @@ Event.init(
       allowNull: false,
       references: {
         model: 'admin',
-        key: 'Id'
+        key: 'adminId'
       }
     },
     eventName: {

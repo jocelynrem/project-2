@@ -1,28 +1,36 @@
 <div class="container-sm mt-5 bg-light p-5">
-  {{> backToDashboard}}
+  <div class="mb-4">
+    {{> backToDashboard}}
+  </div>
 
   <div class="d-flex justify-content-center">
-    <div class="d-grid align-items-start">
+    <div class="d-grid gap-3 align-content-start flex-wrap">
 
-      <div class="card col-sm-3 me-5 shadow text-center" style="width: 15rem; height: 8rem;">
-        <label for="exampleColorInput" class="form-label">Color picker</label>
-        <input type="color" class="form-control form-control-color m-2" id="exampleColorInput" value="#563d7c"
-          title="Choose your color">
-        <div class="card-body bg-dark bg-gradient">
-          <h4 class="text-light text-center"> THEME COLOR 1</h4>
+      <div class="card col-sm-3 shadow-sm m-2 text-center w-75">
+        <div class="align-middle">
+          <input type="color" class="form-control-color m-4" id="ColorOneInput" value="#563d7c" title="Color One">
+        </div>
+
+        <div class="card-body bg-gradient colorOne" style="background-color: gray;">
+          <h4 class="text-dark text-center"> THEME COLOR 1</h4>
         </div>
       </div>
 
-      <div class="card col-sm-3 me-5 shadow text-center" style="width: 15rem; height: 8rem;">
-        <label for="exampleColorInput" class="form-label">Color picker</label>
-        <input type="color" class="form-control form-control-color m-2" id="exampleColorInput" value="#563d7c"
-          title="Choose your color">
-        <div class="card-body bg-dark bg-gradient">
-          <h4 class="text-light text-center"> THEME COLOR 2</h4>
+      <div class="card col-sm-3 shadow-sm m-2 text-center w-75">
+        <div class="align-middle">
+          <input type="color" class="form-control-color m-4" id="ColorTwoInput" value="#563d7c" title="Color Two">
+        </div>
+        <div class="card-body bg-secondary bg-gradient">
+          <h4 class="text-dark text-center"> THEME COLOR 2</h4>
         </div>
       </div>
-
     </div>
-    <div class="card bg-dark ms-5" style="width:18rem; height:34rem;"></div>
+
+    <div class="card colorOne ms-5 shadow" style="width:18rem; height:34rem;">
+      <h5 class="card-header text-dark bg-light">Guest View</h5>
+      {{> guestView}}
+    </div>
   </div>
 </div>
+
+  <script src="./js/theme.js"></script>
