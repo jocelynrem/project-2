@@ -66,4 +66,18 @@ router.post('/logout', (req, res) => {
   }
 });
 
+// adding route to query the admin for redirection after signup
+router.get('/admininfo', async (req, res) => {
+  try {
+    const adminData = await Admin.findOne({
+      where: {
+        email: req.query.email
+      }
+    });
+    res.status(200).json(adminData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

@@ -8,7 +8,7 @@ const signupFormHandler = async (event) => {
   const email = document.querySelector('#email-signup').value.trim();
   console.log('email:', email);
   const password = document.querySelector('#password-signup').value.trim();
-  console.log('password:', password);
+  let adminRedirect = '';
 
   if (firstName && lastName && email && password) {
     const response = await fetch('/api/admin/signup', {
@@ -18,7 +18,22 @@ const signupFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace('/dashboard/{{santiago}}');
+      const requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+      };
+
+      fetch(`/api/admin/admininfo?email=${email}`, requestOptions)
+        .then((response) => response.text())
+        .then((result) => {
+          console.log(result);
+          const myArray = result.split(',');
+          adminRedirect = myArray[0].substring(11);
+        })
+        .then((result) => {
+          document.location.replace(`/dashboard/${adminRedirect}`);
+        })
+        .catch((error) => console.log('error', error));
     } else {
       alert('Failed to sign up.');
     }

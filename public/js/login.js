@@ -1,10 +1,12 @@
+/* eslint-disable no-unused-vars */
 const loginFormHandler = async (event) => {
   event.preventDefault();
 
   const email = document.querySelector('#inputEmail').value.trim();
   console.log('email:', email);
   const password = document.querySelector('#inputPassword').value.trim();
-  console.log('password:', password);
+
+  let adminRedirect = '';
 
   if (email && password) {
     const response = await fetch('/api/admin/login', {
@@ -14,7 +16,22 @@ const loginFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace('/dashboard/{{id}}');
+      const requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+      };
+
+      fetch(`/api/admin/admininfo?email=${email}`, requestOptions)
+        .then((response) => response.text())
+        .then((result) => {
+          console.log(result);
+          const myArray = result.split(',');
+          adminRedirect = myArray[0].substring(11);
+        })
+        .then((result) => {
+          document.location.replace(`/dashboard/${adminRedirect}`);
+        })
+        .catch((error) => console.log('error', error));
     } else {
       alert('Failed to log in.');
     }
