@@ -216,9 +216,7 @@ router.get('/guestView', async (req, res) => {
       }
     });
 
-
     const guestTableData = guestTable.map((event) => event.get({ plain: true }));
-    console.log(guestTableData)
 
     // const tableNumbers = guestTableData.map(table => table.table);  Liz
     const tableNumbers = guestTableData.map(table => table.tableNumber);
@@ -230,10 +228,8 @@ router.get('/guestView', async (req, res) => {
     });
 
     const guests = guestData.map((guest) => guest.get({ plain: true }));
-    // console.log('guests:', guests)
 
     const allGuests = (await Guest.findAll()).map(guest => guest.get({ plain: true }));
-    console.log('allGuests:@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@', allGuests)
 
     const finalGuests = [];
     for (let i = 0; i < tableNumbers.length; i++) {
@@ -249,10 +245,8 @@ router.get('/guestView', async (req, res) => {
         table: tableNumbers[i],
         guests: tableChart
       };
-
       tableChart = [];
     }
-
 
     res.render('guestView', {
       guests: finalGuests,
