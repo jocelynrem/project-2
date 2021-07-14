@@ -1,39 +1,39 @@
 <head>
-
-    <div class="container align-middle">
-
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Be|Seated</title>
-        <link rel="stylesheet" href="../css/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be|Seated</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
-<div class="bg-dark">
-    <img src="../img/logo_light.png" class="p-1 pt-4 pb-4 w-100" alt="be|seated logo">
-</div>
 
-<div class="d-flex flex-column text-center bg-secondary align-middle pt-3 pb-5">
-    <h1>Let's party!</h1>
-</div>
+<div class="container-fluid d-flex flex-column text-center">
 
-
-<section class="guestViewContainer bg-secondary pt-3 pb-5">
-    <!-- User Search  -->
-
-    {{#if guests}}
-    <div class="border border-dark rounded  d-flex mt-2">
-        <div class="d-flex flex-wrap justify-content-center">
-            {{#each guests}}
-            {{> table}}
-            {{/each}}
-        </div>
+    <div class="bg-dark mt-2">
+        <img src="../img/logo_light.png" class="p-1 pt-4 pb-4 w-100" alt="be|seated logo">
     </div>
-    {{else}}
-    <div>There were no results found</div>
-    {{/if}}
-</section>
-</div>
 
+    <div class="pt-4">
+        <div>
+            <h3 class="text-center fw-bold font-monospace mt-2 mb-3 text-uppercase">Let's Party!</h3>
+        </div>
+
+
+        <section class="guestViewContainer bg-secondary mt-4 pt-5 pb-5">
+            <!-- User Search  -->
+            {{#if guests}}
+            <div class="border border-dark rounded  d-flex mt-2">
+                <div class="justify-content-center">
+                    {{#each guests}}
+                    {{> table}}
+                    {{/each}}
+                </div>
+            </div>
+            {{else}}
+            <div>There were no results found</div>
+            {{/if}}
+        </section>
+    </div>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>

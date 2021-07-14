@@ -1,28 +1,41 @@
 <div class="container-md mt-5 bg-light p-5">
     {{> backToDashboard}}
-    <div class="row col-12">
-    <div class="dropdown m-3">
-      <a class="btn btn-danger dropdown-toggle text-light" href="#" role="button" id="dropdownMenuLink"
-        data-bs-toggle="dropdown" aria-expanded="false">
-        Select an Event
-      </a>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        {{> QRcode}}
-      </ul>
-      <br>
-      <br>
-      <h1 id="title"></h1>
-      <br>
-      <h2 id="beseatedURL"></h2>
-      <br>
-      <br>
-      <h3 id="qrTitle"></h3>
-      <br>
-      <img id="qrURL" src="" >
-      <br><br>
-      <h3 id="linkToDL"></h3>
+    <div class="mt-5 mb-2 border-bottom mb-4 pb-2">
+        <h4>{{userFN}}, select an event to see how your guests can view their seating </h4>
     </div>
-</div>
+    <div class="dropdown m-3">
+        <a class="btn btn-danger dropdown-toggle text-light" href="#" role="button" id="dropdownMenuLink"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Select an Event
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            {{> QRcode}}
+        </ul>
+    </div>
+    <div class="d-flex row border-bottom justify-content-center">
+        <div class="ms-5" id="title"></div>
+        <div class="ms-5 ps-5" id="beseatedURL"></div>
+        <div class="col-3 m-4 align-self-center"> <img id="qrURL" src=""> </div>
+        <div class="ms-2 col-6 align-self-center">
+            <div id="qrTitle"></div>
+            <div class="ms-4 pb-3" id="linkToDL"></div>
+        </div>
+    </div>
 
+    <div class="d-flex row pt-5 justify-content-center">
+        <div class="col-6 mt-5 pt-3 ms-2">
+            <h4>This is what your guests will see when they scan your personal event code. </h4>
+            <h5 class="my-3">Remember, this is optimized for phone screens, so it won't look quite right on
+                a computer.
+            </h5>
+        </div>
+        <div class="card shadow col-4 p-0">
+            <div class="card-header">
+                Guest View
+            </div>
+            {{> guestpage}}
+        </div>
 
-<script src="/js/qrEvent.js"></script>
+    </div>
+
+    <script src="/js/qrEvent.js"></script>

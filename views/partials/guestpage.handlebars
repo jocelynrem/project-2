@@ -5,21 +5,22 @@
     <title>Be|Seated</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<div class="container align-middle">
+<div class="container d-flex flex-column mt-2 mb-2">
 
     <div class="bg-dark">
         <img src="../img/logo_light.png" class="p-1 pt-4 pb-4 w-100" alt="be|seated logo">
     </div>
-    <div class="d-flex flex-column text-center bg-secondary pt-3 pb-5">
-        <h2 class="mt-4 mb-3 d-flex flex-column">FIND YOUR SEAT</h2>
 
-        <div class="searchBox m-1 sm-1 d-flex flex-column p-1 pt-2 pb-2">
-            <h5 class="searchInputHeader p-1 pt-2 pb-2">To find your table, enter your first and last name:</h5>
-            <div class="ui-widget p-1 pt-2 pb-2">
+    <div class="d-flex flex-column text-center pt-3 pb-5">
+        <h4 class="fw-bold font-monospace mt-2 mb-3">FIND YOUR SEAT</h4>
+
+        <div class="searchBox sm-1 d-flex flex-column bg-secondary my-2 py-5">
+            <h6 class="searchInputHeader mx-2 pt-1 pb-2">To find your table, enter your first and last name:</h6>
+            <div class="ui-widget pt-2 pb-2">
                 <input type="text" id="searchInput"></input>
             </div>
             <br>
-            <button type="submit" class="btn btn-dark text-light btn-sm shadow-smd-flex p-1 pt-2 pb-2" id="searchBtn"
+            <button type="submit" class="btn btn-dark text-light btn-sm shadow-sm mx-2 pt-2 pb-2" id="searchBtn"
                 click="renderGuestView">Search</button>
         </div>
 
