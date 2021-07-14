@@ -1,18 +1,17 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Op } = require('sequelize');
-// eslint-disable-next-line no-unused-vars
 const { Guest, Event } = require('../models');
-// eslint-disable-next-line no-unused-vars
 const withAuth = require('../utils/auth'); // to be used for authenticated routes
 
 // home page
 router.get('/', async (req, res) => {
   try {
-    console.log('went to root page route');
     res.render('login', {
       loggedIn: req.session.loggedIn,
-      adminId: req.session.adminId
+      adminId: req.session.adminId,
+      userFN: req.session.firstName,
+      userLN: req.session.lastName
     });
   } catch (err) {
     console.log(err);
@@ -23,7 +22,6 @@ router.get('/', async (req, res) => {
 // create account page
 router.get('/createaccount', async (req, res) => {
   try {
-    console.log('went to login route');
     res.render('createAccount');
   } catch (err) {
     console.log(err);
@@ -38,7 +36,9 @@ router.get(
     try {
       res.render('createEvent', {
         loggedIn: req.session.loggedIn,
-        adminId: req.session.adminId
+        adminId: req.session.adminId,
+        userFN: req.session.firstName,
+        userLN: req.session.lastName
       });
     } catch (err) {
       console.log(err);
@@ -52,7 +52,9 @@ router.get('/dashboard/:adminId', withAuth, async (req, res) => {
   try {
     res.render('dashboard', {
       loggedIn: req.session.loggedIn,
-      adminId: req.session.adminId
+      adminId: req.session.adminId,
+      userFN: req.session.firstName,
+      userLN: req.session.lastName
     });
   } catch (err) {
     console.log(err);
@@ -73,6 +75,8 @@ router.get('/upload/:adminId', withAuth, async (req, res) => {
     res.render('createSeating', {
       loggedIn: req.session.loggedIn,
       adminId: req.session.adminId,
+      userFN: req.session.firstName,
+      userLN: req.session.lastName,
       events: events
     });
   } catch (err) {
@@ -94,6 +98,8 @@ router.get('/upload/:adminId/:eventId', withAuth, async (req, res) => {
     res.render('createSeating', {
       loggedIn: req.session.loggedIn,
       adminId: req.session.adminId,
+      userFN: req.session.firstName,
+      userLN: req.session.lastName,
       events: events
     });
   } catch (err) {
@@ -103,10 +109,6 @@ router.get('/upload/:adminId/:eventId', withAuth, async (req, res) => {
 }
 );
 
-
-
-
-
 // route for the theme page
 router.get(
   '/theme/:adminId',
@@ -114,7 +116,9 @@ router.get(
     try {
       res.render('theme', {
         loggedIn: req.session.loggedIn,
-        adminId: req.session.adminId
+        adminId: req.session.adminId,
+        userFN: req.session.firstName,
+        userLN: req.session.lastName
       });
     } catch (err) {
       console.log(err);
@@ -126,7 +130,7 @@ router.get(
 // route for the QR code page
 router.get(
   '/QR/:adminId',
-  /* withAuth, */ async (req, res) => {
+  withAuth, async (req, res) => {
     try {
       const eventData = await Event.findAll({
         where: {
@@ -139,6 +143,8 @@ router.get(
       res.render('QR', {
         loggedIn: req.session.loggedIn,
         adminId: req.session.adminId,
+        userFN: req.session.firstName,
+        userLN: req.session.lastName,
         events: events
       }); // passing the events for the specific admin for handlebars
     } catch (err) {
@@ -162,6 +168,8 @@ router.get('/viewseating/:adminId', withAuth, async (req, res) => {
     res.render('viewSeating', {
       loggedIn: req.session.loggedIn,
       adminId: req.session.adminId,
+      userFN: req.session.firstName,
+      userLN: req.session.lastName,
       events: events
     }); // passing the events for the specific admin for handlebars
   } catch (err) {
@@ -170,7 +178,7 @@ router.get('/viewseating/:adminId', withAuth, async (req, res) => {
   }
 });
 
-// route for view seating page WITH QUERY PARAMENTER
+// route for view seating page WITH QUERY PARAMETER
 router.get(
   '/tables/:adminId/',
   withAuth, async (req, res) => {
@@ -180,7 +188,6 @@ router.get(
           adminId: req.params.adminId
         }
       });
-      // console.log('eventData:', eventData);
       const guestData = await Guest.findAll({
         where: {
           eventId: req.query.eventId
@@ -228,6 +235,8 @@ router.get(
       res.render('tables', {
         loggedIn: req.session.loggedIn,
         adminId: req.session.adminId,
+        userFN: req.session.firstName,
+        userLN: req.session.lastName,
         events: events,
         guests: finalGuests
       }); // passing the events for the specific admin for handlebars
@@ -244,14 +253,6 @@ router.get('/guestView', async (req, res) => {
     const names = req.query.fullName.split(' ');
     const firstName = names[0];
     const lastName = names.length > 1 && names[1];
-    // const guestTable = await Guest.findAll({
-    //   attributes: [[sequelize.fn('DISTINCT', sequelize.col('tableNumber')), 'table']],
-    //   where: {
-    //     firstName,
-    //     lastName,
-    //     eventId: req.query.eventId
-    //   }
-    // });
 
     const guestTable = await Guest.findAll({
       where: {
@@ -264,11 +265,7 @@ router.get('/guestView', async (req, res) => {
     });
 
     const guestTableData = guestTable.map((event) => event.get({ plain: true }));
-    console.log('guestTableData:', guestTableData);
-
-    // const tableNumbers = guestTableData.map(table => table.table);  Liz
     const tableNumbers = guestTableData.map(table => table.tableNumber);
-    console.log('tableNumbers:', tableNumbers);
 
     const guestData = await Guest.findAll({
       where: {
@@ -278,7 +275,6 @@ router.get('/guestView', async (req, res) => {
     });
 
     const guests = guestData.map((guest) => guest.get({ plain: true }));
-    console.log('guests:', guests);
 
     const allGuests = (await Guest.findAll()).map(guest => guest.get({ plain: true }));
 
@@ -299,7 +295,6 @@ router.get('/guestView', async (req, res) => {
       tableChart = [];
     }
 
-    console.log('finalGuests:', finalGuests);
     res.render('guestView', {
       layout: false,
       guests: finalGuests,
