@@ -1,40 +1,37 @@
 <div class="container-sm p-2 mt-4 bg-light">
 
-<div class="mb-3 d-flex p-5 flex-wrap justify-content-center mt-3">
-  <a class="nav-link d-flex" href='/viewseating/{{adminId}}'>
-    <div class="card m-1 shadow" style="max-width: 13rem;">
-      <img class="card-img-middle pt-3 pb-3 bg-dark" src="../img/chair-4.png" alt="row of chairs">
-      <div class="card-body bg-danger bg-gradient">
-        <h4 class="text-light text-center"> View Event Seating</h4>
-      </div>
-    </div>
-  </a>
+  <div class="mt-5 ms-5 ps-5 border-bottom">
+    <h4>Welcome, {{userFN}}! Choose an action to get started: </h4>
+  </div>
 
-  <a class="nav-link d-flex" href='/upload/{{adminId}}'>
-    <div class="card m-1 shadow" style="max-width: 13rem;">
-      <img class="card-img-middle pt-3 pb-3 bg-dark" src="../img/chair-3.png" alt="row of chairs">
-      <div class="card-body bg-danger bg-gradient">
-        <h4 class="text-light text-center"> Create New Event Seating</h4>
-      </div>
-    </div>
-  </a>
 
-  <a class="nav-link d-flex" href='/QR/{{adminId}}'>
-    <div class="card m-1 shadow" style="max-width: 13rem;">
-      <img class="card-img-middle pt-3 pb-3 bg-dark" src="../img/code.png" alt="row of upc codes">
-      <div class="card-body bg-danger bg-gradient">
-        <h4 class="text-light text-center"> Create QR Code</h4>
+  <div class="mb-3 d-flex p-3 flex-wrap justify-content-center mt-1">
+    <a class="nav-link d-flex" href='/viewseating/{{adminId}}'>
+      <div class="card m-1 shadow" style="max-width: 13rem;">
+        <img class="card-img-middle pt-3 pb-3 bg-dark" src="../img/chair-4.png" alt="row of chairs">
+        <div class="card-body bg-danger bg-gradient">
+          <h4 class="text-light text-center"> View Event Seating</h4>
+        </div>
       </div>
-    </div>
-  </a>
+    </a>
 
-  <a class="nav-link d-flex" href='/theme/{{adminId}}'>
-    <div class="card m-1 shadow" style="max-width: 13rem;">
-      <img class="card-img-middle pt-3 pb-3 bg-dark" src="../img/guestView.png" alt="row of phones">
-      <div class="card-body bg-danger bg-gradient">
-        <h4 class="text-light text-center"> Preview Guest View</h4>
+    <a class="nav-link d-flex" href='/upload/{{adminId}}'>
+      <div class="card m-1 shadow" style="max-width: 13rem;">
+        <img class="card-img-middle pt-3 pb-3 bg-dark" src="../img/chair-3.png" alt="row of chairs">
+        <div class="card-body bg-danger bg-gradient">
+          <h4 class="text-light text-center"> Create New Event Seating</h4>
+        </div>
       </div>
-    </div>
-  </a>
-</div>
+    </a>
+
+    <a class="nav-link d-flex" href='/QR/{{adminId}}'>
+      <div class="card m-1 shadow" style="max-width: 13rem;">
+        <img class="card-img-middle pt-3 pb-3 bg-dark" src="../img/code.png" alt="row of upc codes">
+        <div class="card-body bg-danger bg-gradient">
+          <h4 class="text-light text-center"> QR Code and Guest View</h4>
+        </div>
+      </div>
+    </a>
+
+  </div>
 </div>

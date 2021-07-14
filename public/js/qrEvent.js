@@ -6,13 +6,13 @@ const qrTitle = document.getElementById('qrTitle');
 const title = document.getElementById('title');
 
 if (eventId) {
-  title.innerHTML = 'This is the link your guests will need, check it out!';
-  link.innerHTML = `https://beseated.herokuapp.com/guestPage?eventId=${eventId}`;
+  title.innerHTML = '<h2 class="fw-bold">There are two ways guests can find their seat: </h2>';
+  link.innerHTML = `<h4>1. Use this link to access the guest page:</h4><h5 class="text-break ms-3"><a href="https://beseated.herokuapp.com/guestPage?eventId=${eventId}" target="_blank">https://beseated.herokuapp.com/guestPage?eventId=${eventId}</h5></a>`;
   qrTitle.innerHTML =
-    'Right click on the QR Code below and "Save Image As..." to download it';
+    '<h4> 2. Use the event code. Guests simply scan it with thier phone camera.</h4>';
   document.getElementById(
     'qrURL'
   ).src = `https://api.qrserver.com/v1/create-qr-code/?data=https://beseated.herokuapp.com/guestPage?eventId=${eventId}&amp;size=250x250`;
   document.getElementById('qrURL').alt = 'QRCODE';
-  linkDL.innerHTML = `If you like to print the QRCode, please click <a href="https://api.qrserver.com/v1/create-qr-code/?data=https://beseated.herokuapp.com/guestPage?eventId=${eventId}&amp;size=250x250" target="_blank">here</a>`;
+  linkDL.innerHTML = `<ul><h5> <li>To <section class="fw-bold d-inline text-uppercase">download</section> the code and add it to your event graphics simply right click on the QR Code and "Save Image As..."</li><li class="py-3">To <section class="fw-bold d-inline text-uppercase">print</section> the QRCode, please click <a href="https://api.qrserver.com/v1/create-qr-code/?data=https://beseated.herokuapp.com/guestPage?eventId=${eventId}&amp;size=250x250" target="_blank">here</a></li></h5></ul>`;
 }
