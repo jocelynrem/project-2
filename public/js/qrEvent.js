@@ -1,6 +1,5 @@
 const urlParams = new URLSearchParams(window.location.search);
 const eventId = urlParams.get('eventId');
-console.log('myParam:', eventId);
 const link = document.getElementById('beseatedURL');
 const linkDL = document.getElementById('linkToDL');
 const qrTitle = document.getElementById('qrTitle');
