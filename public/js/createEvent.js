@@ -15,7 +15,7 @@ const eventFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      confirm('Event created');
+      alert('Event created');
       window.location.href = `../upload/${adminid}`;
     } else {
       alert('Failed to sign up.');

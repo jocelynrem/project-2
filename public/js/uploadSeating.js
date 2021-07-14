@@ -21,6 +21,13 @@ const uploadFormHandler = async (event) => {
     headers: { 'Cookie': cookie }
     // headers: { "Content-Type": "multipart/form-data" }
   });
+
+  if (response.ok) {
+    alert('Seating chart uploaded');
+    window.location.reload();
+  } else {
+    alert('Failed to load chart');
+  }
 };
 
 document
