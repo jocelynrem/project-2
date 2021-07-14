@@ -14,6 +14,7 @@
       <h1 id="renderEventName"></h1>
       <button id="update_Guest">modify guest seating</button>
       <button id="add_Guest">add new guest</button>
+      <button id="delete_Guest">delete guest</button>
       <div class="border border-dark rounded  d-flex mt-2">
         <div class="d-flex flex-wrap justify-content-center">
           {{#each guests}}
@@ -27,6 +28,7 @@
 
 {{> updateGuestModal}}
 {{> addGuestModal}}
+{{> deleteGuestModal}}
 
 <script src="/js/eventheaders.js"></script>
 <script src="/js/modal.js"></script>
