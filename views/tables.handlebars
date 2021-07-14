@@ -21,9 +21,16 @@
         {{#each guests}}
         {{> table}}
         {{/each}}
+
       </div>
     </div>
   </div>
 </div>
 
+
+{{> updateGuestModal}}
+{{> addGuestModal}}
+{{> deleteGuestModal}}
+
 <script src="/js/eventheaders.js"></script>
+<script src="/js/modal.js"></script>
