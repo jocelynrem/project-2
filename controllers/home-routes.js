@@ -272,7 +272,8 @@ router.get('/guestView', async (req, res) => {
 
     const guestData = await Guest.findAll({
       where: {
-        tableNumber: { [Op.in]: tableNumbers }
+        tableNumber: { [Op.in]: tableNumbers },
+        eventId: req.query.eventId
       }
     });
 
