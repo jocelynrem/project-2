@@ -12,8 +12,8 @@
         {{/each}}
       </ul>
       <h1 id="renderEventName"></h1>
-      <button id="addGuest">modify guest seating</button>
-      <button>add new guest</button>
+      <button id="update_Guest">modify guest seating</button>
+      <button id="add_Guest">add new guest</button>
       <div class="border border-dark rounded  d-flex mt-2">
         <div class="d-flex flex-wrap justify-content-center">
           {{#each guests}}
@@ -26,6 +26,7 @@
 </div>
 
 {{> updateGuestModal}}
+{{> addGuestModal}}
 
 <script src="/js/eventheaders.js"></script>
 <script src="/js/modal.js"></script>
