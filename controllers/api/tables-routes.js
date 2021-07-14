@@ -38,7 +38,6 @@ router.get('/:eventId/:tableNum', async (req, res) => {
 
 router.put('/:eventId/update', async (req, res) => {
   try {
-    console.log('req.body:', req.body);
     const guestData = await Guest.update(req.body,
       {
         where: {

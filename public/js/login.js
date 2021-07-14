@@ -1,9 +1,7 @@
-/* eslint-disable no-unused-vars */
 const loginFormHandler = async (event) => {
   event.preventDefault();
 
   const email = document.querySelector('#inputEmail').value.trim();
-  console.log('email:', email);
   const password = document.querySelector('#inputPassword').value.trim();
 
   let adminRedirect = '';
@@ -24,7 +22,6 @@ const loginFormHandler = async (event) => {
       fetch(`/api/admin/admininfo?email=${email}`, requestOptions)
         .then((response) => response.text())
         .then((result) => {
-          console.log(result);
           const myArray = result.split(',');
           adminRedirect = myArray[0].substring(11);
         })
@@ -38,6 +35,7 @@ const loginFormHandler = async (event) => {
   }
 };
 
+// eslint-disable-next-line no-unused-vars
 function showPassword () {
   const x = document.getElementById('inputPassword');
   if (x.type === 'password') {

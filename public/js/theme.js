@@ -1,4 +1,5 @@
 
+// eslint-disable-next-line no-undef
 const colorOne = Pickr.create({
   el: '.color-picker-one',
   theme: 'nano',
@@ -20,6 +21,7 @@ colorOne.on('change', (color) => {
   document.getElementById('guestView').style.background = colorOneHEXA;
 });
 
+// eslint-disable-next-line no-undef
 const colorTwo = Pickr.create({
   el: '.color-picker-two',
   theme: 'nano',

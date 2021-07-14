@@ -1,12 +1,9 @@
-/* eslint-disable prefer-const */
-/* eslint-disable no-unused-vars */
 const signupFormHandler = async (event) => {
   event.preventDefault();
 
   const firstName = document.querySelector('#firstName-signup').value.trim();
   const lastName = document.querySelector('#lastName-signup').value.trim();
   const email = document.querySelector('#email-signup').value.trim();
-  console.log('email:', email);
   const password = document.querySelector('#password-signup').value.trim();
   let adminRedirect = '';
 
@@ -26,7 +23,6 @@ const signupFormHandler = async (event) => {
       fetch(`/api/admin/admininfo?email=${email}`, requestOptions)
         .then((response) => response.text())
         .then((result) => {
-          console.log(result);
           const myArray = result.split(',');
           adminRedirect = myArray[0].substring(11);
         })
@@ -44,7 +40,9 @@ document
   .querySelector('.register')
   .addEventListener('click', signupFormHandler);
 
+// eslint-disable-next-line no-unused-vars
 function showPassword () {
+  // eslint-disable-next-line prefer-const
   let x = document.getElementById('password-signup');
   if (x.type === 'password') {
     x.type = 'text';

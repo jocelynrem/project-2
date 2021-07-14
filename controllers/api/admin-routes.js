@@ -5,11 +5,12 @@ const { Admin } = require('../../models');
 router.post('/signup', async (req, res) => {
   try {
     const adminData = await Admin.create(req.body);
-    // console.log('userData:', adminData);
 
     req.session.save(() => {
       req.session.adminId = adminData.adminId;
       req.session.loggedIn = true;
+      req.session.firstName = adminData.firstName;
+      req.session.lastName = adminData.lastName;
 
       res.status(200).json(adminData);
     });
@@ -26,7 +27,6 @@ router.post('/login', async (req, res) => {
         email: req.body.email
       }
     });
-    console.log('adminData:', adminData.adminId);
 
     if (!adminData) {
       res
@@ -47,6 +47,8 @@ router.post('/login', async (req, res) => {
     req.session.save(() => {
       req.session.adminId = adminData.adminId;
       req.session.loggedIn = true;
+      req.session.firstName = adminData.firstName;
+      req.session.lastName = adminData.lastName;
 
       res.json({ user: adminData, message: 'You are now logged in!' });
     });

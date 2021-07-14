@@ -9,6 +9,7 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <div class="navbar-nav ms-auto">
                 {{#if loggedIn}}
+                    <a class="nav-link nav-item">Welcome, <b><i>{{userFN}} {{userLN}}</i></b></a>
                     <a class="nav-link nav-item" href='/viewseating/{{adminId}}'>SEATING</a>
                     <a class="nav-link nav-item" href='/upload/{{adminId}}'>CREATE EVENT</a>
                     <a class="nav-link nav-item" href='/theme/{{adminId}}'>PREVIEW</a>
