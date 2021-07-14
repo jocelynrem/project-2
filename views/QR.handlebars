@@ -9,9 +9,7 @@
         Select an Event
       </a>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        {{#each events}}
-        <li><a class="dropdown-item" href="https://api.qrserver.com/v1/create-qr-code/?data=https://beseated.herokuapp.com/guestPage?eventId={{this.eventId}}&amp;size=250x250" target="_blank">{{this.eventName}}</a></li>
-        {{/each}}
+        {{> QRcode}}
       </ul>
     </div>
 </div>

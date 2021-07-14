@@ -1,0 +1,24 @@
+<div class="p-2 justify-content-start">
+    <div class="d-flex row">
+        <h5>Step 2- Upload your seating chart</h5>
+
+    </div>
+
+    <div class="dropdown m-3 d-flex row m-2">
+        <a class="btn btn-dark dropdown-toggle text-light shadow-sm" href="#" role="button" id="dropdownMenuLink"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Select an event to add a seating chart
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            {{#each events}}
+            <li><a class="dropdown-item" href="../upload/{{adminId}}?eventId={{this.eventId}}">{{this.eventName}}</a>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+
+    <form class="d-flex row m-2">
+        <input type="file" id="myFile" name="uploadfile" class="mb-4">
+        <button type="submit" class="submitButton btn m-2 bg-danger text-light row col-6">Submit</button>
+    </form>
+</div>
