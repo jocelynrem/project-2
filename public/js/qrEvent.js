@@ -4,8 +4,10 @@ console.log('myParam:', eventId);
 const link = document.getElementById('beseatedURL');
 const linkDL = document.getElementById('linkToDL');
 const qrTitle = document.getElementById('qrTitle');
+const title = document.getElementById('title');
 
 if (eventId) {
+  title.innerHTML = 'This is the link your guests will need, check it out!';
   link.innerHTML = `https://beseated.herokuapp.com/guestPage?eventId=${eventId}`;
   qrTitle.innerHTML =
     'Right click on the QR Code below and "Save Image As..." to download it';
