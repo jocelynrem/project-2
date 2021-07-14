@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Admin } = require('../../models');
+const { Admin, Event } = require('../../models');
 
 // use for Admin signup
 router.post('/signup', async (req, res) => {
@@ -78,6 +78,23 @@ router.get('/admininfo', async (req, res) => {
     });
     res.status(200).json(adminData);
   } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/eventinfo/:eventId', async (req, res) => {
+  try {
+    const eventData = await Event.findAll({
+      where: {
+        eventId: req.params.eventId
+      }
+    });
+
+    const events = eventData.map((event) => event.get({ plain: true }));
+
+    res.status(200).json(events);
+  } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
