@@ -71,4 +71,23 @@ router.post('/:eventId/new', async (req, res) => {
   }
 });
 
+router.delete('/:eventId/delete', async (req, res) => {
+  try {
+    const guestData = await Guest.destroy({
+      where: {
+        eventId: req.params.eventId,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName
+      }
+    });
+    if (!guestData) {
+      res.status(404).json({ message: 'No guest found with this name!' });
+      return;
+    }
+    res.status(200).json(guestData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
