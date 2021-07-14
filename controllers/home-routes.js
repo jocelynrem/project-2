@@ -139,12 +139,12 @@ router.get(
       });
 
       const events = eventData.map((event) => event.get({ plain: true }));
-
       res.render('QR', {
         loggedIn: req.session.loggedIn,
         adminId: req.session.adminId,
         userFN: req.session.firstName,
         userLN: req.session.lastName,
+        eventId: req.query.eventId,
         events: events
       }); // passing the events for the specific admin for handlebars
     } catch (err) {
