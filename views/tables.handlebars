@@ -3,29 +3,29 @@
   <div class="mx-2 border-bottom">
     <h4>{{userFN}}, select an event to view the seating chart: </h4>
   </div>
-  <div class="row col-12">
-    <div class="dropdown m-3">
-      <a class="btn btn-danger dropdown-toggle text-light shadow" href="#" role="button" id="dropdownMenuLink"
-        data-bs-toggle="dropdown" aria-expanded="false">
-        Select a Seating Chart to View
-      </a>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        {{#each events}}
-        <li><a class="dropdown-item" href="?eventId={{this.eventId}}">{{this.eventName}}</a></li>
-        {{/each}}
-      </ul>
-    </div>
-    <h1 class="fw-bold m-1 d-flex justify-content-end text-uppercase" id="renderEventName"></h1>
-    <button id="update_Guest">modify guest seating</button>
-    <button id="add_Guest">add new guest</button>
-    <button id="delete_Guest">delete guest</button>
-    <div class="border border-dark rounded d-flex">
-      <div class="d-flex flex-wrap justify-content-center">
-        {{#each guests}}
-        {{> table}}
-        {{/each}}
+  <div class="dropdown m-2 d-flex justify-content-between align-items-start button">
+    <a class="btn btn-danger dropdown-toggle text-light shadow-sm" href="#" role="button" id="dropdownMenuLink"
+      data-bs-toggle="dropdown" aria-expanded="false">
+      Select a Seating Chart to View
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      {{#each events}}
+      <li><a class="dropdown-item" href="?eventId={{this.eventId}}">{{this.eventName}}</a></li>
+      {{/each}}
+    </ul>
+    <h1 class="fw-bold text-uppercase text-danger lh-1" id="renderEventName"></h1>
+  </div>
+  <div class="p-2 mb-2 d-flex justify-content-start">
+    <button type="button" class="px-3 me-3 btn-sm btn-danger text-light shadow-sm text-capitalize" id="update_Guest">change guest table</button>
+    <button type="button" class="px-3 mx-3 btn-sm btn-danger text-light shadow-sm text-capitalize" id="add_Guest">add new guest</button>
+    <button type="button" class="px-3 mx-3 btn-sm btn-danger text-light shadow-sm text-capitalize" id="delete_Guest">delete guest</button>
+  </div>
+  <div class="border border-dark rounded d-flex">
+    <div class="d-flex flex-wrap justify-content-center">
+      {{#each guests}}
+      {{> table}}
+      {{/each}}
 
-      </div>
     </div>
   </div>
 </div>
