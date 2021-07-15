@@ -1,10 +1,8 @@
-<div class="p-2 justify-content-start border rounded mt-2">
-    <div class="d-flex row">
-        <h5 class="fw-bold">Step 2- Upload your seating chart</h5>
+<div class="p-3 border rounded mt-3 bg-secondary">
+        <h5 class="flex-column fw-bold">Step 2- Upload your seating chart</h5>
 
-    </div>
 
-    <div class="dropdown row d-flex m-1">
+    <div class="dropdown m-1">
         <a class="btn btn-dark dropdown-toggle text-light shadow-sm" href="#" role="button" id="dropdownMenuLink"
             data-bs-toggle="dropdown" aria-expanded="false">
             Select an event to add a seating chart
@@ -15,21 +13,19 @@
             </li>
             {{/each}}
         </ul>
-        <h4 class="fw-bold m-1 text-uppercase text-dark" id="renderEventName"></h4>
     </div>
+        <h4 class="fw-bold m-1 text-uppercase text-danger my-3" id="renderEventName"></h4>
+        <div class="d-grid gap-2">
+                   <input type="file" id="myFile" name="uploadfile" class="mb-2" >
+        <button type="submit" class="submitButton btn bg-dark text-light">Submit</button> 
+        </div>
 
-    <form class="d-flex row">
-        <input type="file" id="myFile" name="uploadfile" class="ms-3 mb-2">
-                <div class="d-flex justify-content-end">
-
-        <button type="submit" class="submitButton btn bg-danger text-light">Submit</button>
-    </form>
 </div>
 
 <script src="/js/eventheaders.js"></script>
-<script src = '/js/uploadSeating.js'></script>
+<script src='/js/uploadSeating.js'></script>
 
-{{!-- 
+{{!--
 
 
 <div class="p-2 justify-content-start border rounded mt-2">
@@ -54,11 +50,11 @@
 
     <form class="d-flex row">
         <input type="file" id="myFile" name="uploadfile" class="ms-3 mb-2">
-                <div class="d-flex justify-content-end">
+        <div class="d-flex justify-content-end">
 
-        <button type="submit" class="submitButton btn bg-danger text-light">Submit</button>
+            <button type="submit" class="submitButton btn bg-danger text-light">Submit</button>
     </form>
 </div>
 
-<script src = '/js/uploadSeating.js'></script>
+<script src='/js/uploadSeating.js'></script>
 <script src="/js/eventheaders.js"></script> --}}

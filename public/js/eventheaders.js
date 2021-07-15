@@ -1,5 +1,5 @@
 const event = window.location.search.split('=');
-const eventid = event[1];
+const eventID = event[1];
 let eventName = '';
 const renderEvent = document.getElementById('renderEventName');
 const requestOptions = {
@@ -7,7 +7,7 @@ const requestOptions = {
   redirect: 'follow'
 };
 
-fetch(`../api/admin/eventinfo/${eventid}`, requestOptions)
+fetch(`../api/admin/eventinfo/${eventID}`, requestOptions)
   .then((response) => response.text())
   .then((result) => {
     const myArray = result.split(',');
