@@ -11,7 +11,11 @@
 
         <section class="guestViewContainer bg-secondary mt-4 p-4">
             <!-- User Search  -->
-            <button type="button" class="px-3 me-3 btn-sm btn-danger text-light shadow-sm text-capitalize">search again</button>
+            <script>
+
+            document.write(`<button type="button" class="px-3 me-3 btn-sm btn-danger text-light shadow-sm text-capitalize"><a class = "text-light text-decoration-none" href= " ${document.referrer} ">search again</a></button>`)
+
+            </script>
             {{#if guests}}
             <div class="border border-dark rounded mt-2 p-2">
                 <div class="d-grid justify-content-center">
@@ -27,3 +31,5 @@
 
     </div>
 </div>
+
+
