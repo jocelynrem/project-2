@@ -1,71 +1,34 @@
 <div class="container-md mt-5 bg-light p-5">
     {{> backToDashboard}}
-    <div class="row col-12">
-    <div class="dropdown m-3">
-      <a class="btn btn-danger dropdown-toggle text-light" href="#" role="button" id="dropdownMenuLink"
-        data-bs-toggle="dropdown" aria-expanded="false">
-        Select an Event
-      </a>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        {{> QRcode}}
-      </ul>
-      <br>
-      <br>
-      <h1 id="title"></h1>
-      <br>
-      <h2 id="beseatedURL"></h2>
-      <br>
-      <br>
-      <h3 id="qrTitle"></h3>
-      <br>
-      <img id="qrURL" src="" >
-      <br><br>
-      <h3 id="linkToDL"></h3>
-    </div>
-</div>
-
-
-<script src="/js/qrEvent.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{{!-- <div class="container-md mt-5 bg-light p-5">
-    {{> backToDashboard}}
     <div class="mt-5 mb-2 border-bottom mb-4 pb-2">
         <h4>{{userFN}}, select an event to see how your guests can view their seating </h4>
     </div>
-    <div class="dropdown m-3">
-        <a class="btn btn-danger dropdown-toggle text-light" href="#" role="button" id="dropdownMenuLink"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            Select an Event
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            {{> QRcode}}
-        </ul>
-    </div>
-    <div class="d-flex row border-bottom justify-content-center">
-        <div class="ms-5" id="title"></div>
-        <div class="ms-5 ps-5" id="beseatedURL"></div>
-        <div class="col-3 m-4 align-self-center"> <img id="qrURL" src=""> </div>
-        <div class="ms-2 col-6 align-self-center">
-            <div id="qrTitle"></div>
-            <div class="ms-4 pb-3" id="linkToDL"></div>
+    <div class="flex-column">
+        <div class="dropdown m-3 d-flex flex-row justify-content-between">
+            <a class="btn btn-danger dropdown-toggle text-light mb-4 shadow-sm" href="#" role="button"
+                id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                Select an Event
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+
+                {{#each events}}
+                <li><a class="dropdown-item" href="?eventId={{eventId}}">{{this.eventName}}</a></li>
+                {{/each}}
+            </ul>
+            <h1 class="fw-bold text-uppercase text-danger" id="renderEventName"></h1>
+        </div>
+        <div class="border-bottom">
+            <div class="ms-2 mt-2 flex-column" id="title"></div>
+            <div class="ms-3 my-2 ps-3 flex-column" id="beseatedURL"></div>
+            <div class="d-inline-flex my-4 px-2">
+                <div class="px-2 mx-2"> <img id="qrURL" src=""> </div>
+                <div class="mx-2">
+                    <div class="ms-2" id="qrTitle"></div>
+                    <div class="ms-3 pb-3 px-2" id="linkToDL"></div>
+                </div>
+            </div>
         </div>
     </div>
-
     <div class="d-flex row pt-5 justify-content-center">
         <div class="col-6 mt-5 pt-3 ms-2">
             <h4>This is what your guests will see when they scan your personal event code. </h4>
@@ -77,9 +40,14 @@
             <div class="card-header">
                 Guest View
             </div>
-            {{> guestpage}}
+            <div class="d-flex ratio ratio-1x1" id="guestFrame">
+
+            </div>
         </div>
 
     </div>
+</div>
 
-    <script src="/js/qrEvent.js"></script> --}}
+
+<script src="/js/eventheaders.js"></script>
+<script src="/js/qrEvent.js"></script>
