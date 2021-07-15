@@ -9,7 +9,7 @@ if (eventId) {
   title.innerHTML = '<h2 class="fw-bold">There are two ways guests can find their seat: </h2>';
   link.innerHTML = `<h4>1. Use this link to access the guest page:</h4><h5 class="text-break ms-3"><a href="https://beseated.herokuapp.com/guestPage?eventId=${eventId}" target="_blank">https://beseated.herokuapp.com/guestPage?eventId=${eventId}</h5></a>`;
   qrTitle.innerHTML =
-    '<h4> 2. Use the event code. Guests simply scan it with thier phone camera.</h4>';
+    '<h4> 2. Use the event code. Guests simply scan it with their phone camera.</h4>';
   document.getElementById(
     'qrURL'
   ).src = `https://api.qrserver.com/v1/create-qr-code/?data=https://beseated.herokuapp.com/guestPage?eventId=${eventId}&amp;size=250x250`;
