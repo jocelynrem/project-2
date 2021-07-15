@@ -30,7 +30,7 @@ https://beseated.herokuapp.com/
 
 A demo for the Admin User Experience can be found here: 
 
-*********insert link here
+https://drive.google.com/file/d/1nuy9PY3poKoPu17KkfpDZaRc6yuP2I_J/view
 
 ### Guest User Experience 
 
@@ -40,7 +40,7 @@ A demo for the Admin User Experience can be found here:
 
 A demo for the Guest User Experience can be found here: 
 
-**********insert link here
+https://drive.google.com/file/d/14Ftx1emE8JA6kXuMvNY8A894B0hpQHfZ/view
 
 ## Modules Used
 
