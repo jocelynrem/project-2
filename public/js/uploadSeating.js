@@ -1,6 +1,6 @@
 const cookie = document.cookie;
 const href = window.location.href.split('=');
-const eventid = href[href.length - 1];
+const eventID = href[href.length - 1];
 
 const uploadFormHandler = async (event) => {
   event.preventDefault();
@@ -8,7 +8,7 @@ const uploadFormHandler = async (event) => {
   const formData = new FormData();
   formData.append('uploadfile', uploadfile);
 
-  const response = await fetch(`../api/file/uploadfile/${eventid}`, {
+  const response = await fetch(`../api/file/uploadfile/${eventID}`, {
     method: 'POST',
     body: formData,
     headers: { 'Cookie': cookie }
